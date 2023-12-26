@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtkgdds0aaqa"]
+
+[ext_resource type="Texture2D" uid="uid://c8gn8o0rt4agt" path="res://Walk.png" id="1_tranc"]
+
+[sub_resource type="Animation" id="Animation_mng3c"]
+resource_name = "Walk Right"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vsqs5"]
+_data = {
+"Walk Right": SubResource("Animation_mng3c")
+}
+
+[node name="Cat" type="Sprite2D"]
+texture_filter = 1
+position = Vector2(29.75, 39.6667)
+scale = Vector2(1.79333, 1.79333)
+texture = ExtResource("1_tranc")
+hframes = 4
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vsqs5")
+}
