@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://rfsh1jqks2ap"]
+[gd_scene load_steps=9 format=3 uid="uid://ct5bifoe504nt"]
 
 [ext_resource type="Script" path="res://past_level.gd" id="1_ckfk8"]
 [ext_resource type="PackedScene" uid="uid://betpqqnfkgqs5" path="res://cat.tscn" id="1_s4ikg"]
+[ext_resource type="Texture2D" uid="uid://bic6cg2my1cu1" path="res://Assets/Background.png" id="3_o7q1h"]
+[ext_resource type="Texture2D" uid="uid://cyi7lng8qar0" path="res://Assets/Past bg.png" id="4_71kew"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0tjr"]
 size = Vector2(54, 661)
@@ -36,5 +38,15 @@ shape = SubResource("RectangleShape2D_5oe7y")
 position = Vector2(1175, 344.5)
 shape = SubResource("RectangleShape2D_w3ds0")
 
+[node name="bg" type="Sprite2D" parent="."]
+position = Vector2(583, 330.5)
+scale = Vector2(1.01215, 1.01698)
+texture = ExtResource("3_o7q1h")
+
+[node name="house bg" type="Sprite2D" parent="."]
+position = Vector2(583, 330.5)
+scale = Vector2(1.01215, 1.01698)
+texture = ExtResource("4_71kew")
+
 [node name="Cat" parent="." instance=ExtResource("1_s4ikg")]
-position = Vector2(276, 441)
+position = Vector2(576, 326)

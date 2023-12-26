@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlhppyw3lsjyk"]
+[gd_scene load_steps=3 format=3 uid="uid://dr7xh8c4rxkav"]
 
 [ext_resource type="Script" path="res://dialogue_box.gd" id="1_vqcml"]
+[ext_resource type="Texture2D" uid="uid://cdfwaba8c6lrp" path="res://Assets/dialogue box.png" id="2_u6ewp"]
 
 [node name="DialogueBox" type="Control"]
 layout_mode = 3
@@ -29,3 +30,9 @@ offset_top = 24.0
 offset_right = 452.0
 offset_bottom = 95.0
 text = "(empty)"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(669, 127)
+scale = Vector2(7.24908, 8.45725)
+texture = ExtResource("2_u6ewp")
