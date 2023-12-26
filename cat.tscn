@@ -1,6 +1,7 @@
-[gd_scene load_steps=26 format=3 uid="uid://betpqqnfkgqs5"]
+[gd_scene load_steps=27 format=3 uid="uid://betpqqnfkgqs5"]
 
 [ext_resource type="Texture2D" uid="uid://qrmjy67tyad1" path="res://Assets/Cat.png" id="1_1rl5w"]
+[ext_resource type="Script" path="res://cat.gd" id="1_uur65"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q23fl"]
 atlas = ExtResource("1_1rl5w")
@@ -193,13 +194,13 @@ animations = [{
 size = Vector2(47, 40)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_uur65")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_igjy3")
-animation = &"Fire"
-frame = 3
-frame_progress = 0.833645
+animation = &"Walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-5.5, 4)
