@@ -190,18 +190,17 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3bkw1"]
-size = Vector2(403, 380)
+size = Vector2(47, 40)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(223, 299)
-scale = Vector2(5.96667, 5.96667)
 sprite_frames = SubResource("SpriteFrames_igjy3")
-animation = &"Water"
-frame_progress = 0.421543
+animation = &"Fire"
+frame = 3
+frame_progress = 0.833645
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(207.5, 320)
+position = Vector2(-5.5, 4)
 shape = SubResource("RectangleShape2D_3bkw1")
