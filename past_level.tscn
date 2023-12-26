@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://rfsh1jqks2ap"]
+
+[ext_resource type="PackedScene" uid="uid://betpqqnfkgqs5" path="res://cat.tscn" id="1_s4ikg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0tjr"]
+size = Vector2(54, 661)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7obtn"]
+size = Vector2(1161, 46)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5oe7y"]
+size = Vector2(1167, 79)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w3ds0"]
+size = Vector2(48, 701)
+
+[node name="PastLevel" type="Node2D"]
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="left" type="CollisionShape2D" parent="Walls"]
+position = Vector2(-27, 324)
+shape = SubResource("RectangleShape2D_m0tjr")
+
+[node name="top" type="CollisionShape2D" parent="Walls"]
+position = Vector2(576.5, -22)
+shape = SubResource("RectangleShape2D_7obtn")
+
+[node name="bottom" type="CollisionShape2D" parent="Walls"]
+position = Vector2(581.5, 685.5)
+shape = SubResource("RectangleShape2D_5oe7y")
+
+[node name="right" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1175, 344.5)
+shape = SubResource("RectangleShape2D_w3ds0")
+
+[node name="Cat" parent="." instance=ExtResource("1_s4ikg")]
+position = Vector2(276, 441)
