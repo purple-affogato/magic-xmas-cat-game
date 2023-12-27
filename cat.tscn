@@ -106,7 +106,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_723ev")
 }],
-"loop": true,
+"loop": false,
 "name": &"Fire",
 "speed": 5.0
 }, {
@@ -134,7 +134,7 @@ animations = [{
 "duration": 5.0,
 "texture": SubResource("AtlasTexture_8ks50")
 }],
-"loop": true,
+"loop": false,
 "name": &"Scratch",
 "speed": 5.0
 }, {
@@ -151,7 +151,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7w81v")
 }],
-"loop": true,
+"loop": false,
 "name": &"Tail Whip",
 "speed": 5.0
 }, {
@@ -185,7 +185,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hsld8")
 }],
-"loop": true,
+"loop": false,
 "name": &"Water",
 "speed": 5.0
 }]
@@ -199,7 +199,9 @@ script = ExtResource("1_b8a80")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_igjy3")
-animation = &"Idle"
+animation = &"Scratch"
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-5.5, 4)
