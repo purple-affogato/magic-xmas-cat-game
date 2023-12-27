@@ -1,0 +1,88 @@
+[gd_scene load_steps=12 format=3 uid="uid://cc5gph0lp0ay1"]
+
+[ext_resource type="Texture2D" uid="uid://8gjs8d8girkp" path="res://Assets/Bird.png" id="1_p6fn1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u34km"]
+atlas = ExtResource("1_p6fn1")
+region = Rect2(0, 0, 75, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jshg"]
+atlas = ExtResource("1_p6fn1")
+region = Rect2(75, 0, 75, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y11wk"]
+atlas = ExtResource("1_p6fn1")
+region = Rect2(150, 0, 75, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rl55c"]
+atlas = ExtResource("1_p6fn1")
+region = Rect2(225, 0, 75, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ronsh"]
+atlas = ExtResource("1_p6fn1")
+region = Rect2(0, 100, 75, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3o25t"]
+atlas = ExtResource("1_p6fn1")
+region = Rect2(75, 100, 75, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m68gb"]
+atlas = ExtResource("1_p6fn1")
+region = Rect2(150, 100, 75, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8nj3"]
+atlas = ExtResource("1_p6fn1")
+region = Rect2(225, 100, 75, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6v0ht"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u34km")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jshg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y11wk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rl55c")
+}],
+"loop": true,
+"name": &"fly_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ronsh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3o25t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m68gb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8nj3")
+}],
+"loop": true,
+"name": &"water",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldvcl"]
+size = Vector2(42, 31.5)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_6v0ht")
+animation = &"fly_idle"
+frame_progress = 0.44979
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-3, 6)
+shape = SubResource("RectangleShape2D_ldvcl")
