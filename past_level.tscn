@@ -1,42 +1,34 @@
-[gd_scene load_steps=9 format=3 uid="uid://ct5bifoe504nt"]
+[gd_scene load_steps=13 format=3 uid="uid://rfsh1jqks2ap"]
 
 [ext_resource type="Script" path="res://past_level.gd" id="1_ckfk8"]
 [ext_resource type="PackedScene" uid="uid://betpqqnfkgqs5" path="res://cat.tscn" id="1_s4ikg"]
 [ext_resource type="Texture2D" uid="uid://bic6cg2my1cu1" path="res://Assets/Background.png" id="3_o7q1h"]
 [ext_resource type="Texture2D" uid="uid://cyi7lng8qar0" path="res://Assets/Past bg.png" id="4_71kew"]
+[ext_resource type="PackedScene" uid="uid://dlhppyw3lsjyk" path="res://dialogue_box.tscn" id="5_ntd08"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0tjr"]
-size = Vector2(54, 661)
+size = Vector2(305, 661)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7obtn"]
-size = Vector2(1161, 46)
+size = Vector2(1161, 550)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5oe7y"]
-size = Vector2(1167, 79)
+size = Vector2(1167, 76)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w3ds0"]
 size = Vector2(48, 701)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fwgeu"]
+size = Vector2(60, 146)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_166fq"]
+size = Vector2(142.5, 167)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h4pf8"]
+size = Vector2(181, 195)
+
 [node name="PastLevel" type="Node2D"]
 script = ExtResource("1_ckfk8")
-
-[node name="Walls" type="StaticBody2D" parent="."]
-
-[node name="left" type="CollisionShape2D" parent="Walls"]
-position = Vector2(-27, 324)
-shape = SubResource("RectangleShape2D_m0tjr")
-
-[node name="top" type="CollisionShape2D" parent="Walls"]
-position = Vector2(576.5, -22)
-shape = SubResource("RectangleShape2D_7obtn")
-
-[node name="bottom" type="CollisionShape2D" parent="Walls"]
-position = Vector2(581.5, 685.5)
-shape = SubResource("RectangleShape2D_5oe7y")
-
-[node name="right" type="CollisionShape2D" parent="Walls"]
-position = Vector2(1175, 344.5)
-shape = SubResource("RectangleShape2D_w3ds0")
 
 [node name="bg" type="Sprite2D" parent="."]
 position = Vector2(583, 330.5)
@@ -48,5 +40,39 @@ position = Vector2(583, 330.5)
 scale = Vector2(1.01215, 1.01698)
 texture = ExtResource("4_71kew")
 
+[node name="Obstructions" type="StaticBody2D" parent="."]
+
+[node name="left" type="CollisionShape2D" parent="Obstructions"]
+position = Vector2(98.5, 324)
+shape = SubResource("RectangleShape2D_m0tjr")
+
+[node name="top" type="CollisionShape2D" parent="Obstructions"]
+position = Vector2(576.5, 230)
+shape = SubResource("RectangleShape2D_7obtn")
+
+[node name="bottom" type="CollisionShape2D" parent="Obstructions"]
+position = Vector2(581.5, 687)
+shape = SubResource("RectangleShape2D_5oe7y")
+
+[node name="right" type="CollisionShape2D" parent="Obstructions"]
+position = Vector2(1175, 344.5)
+shape = SubResource("RectangleShape2D_w3ds0")
+
+[node name="tree" type="CollisionShape2D" parent="Obstructions"]
+position = Vector2(326, 515)
+shape = SubResource("RectangleShape2D_fwgeu")
+
+[node name="sofa" type="CollisionShape2D" parent="Obstructions"]
+position = Vector2(503, 476.5)
+shape = SubResource("RectangleShape2D_166fq")
+
+[node name="tree2" type="CollisionShape2D" parent="Obstructions"]
+position = Vector2(330.5, 451.5)
+shape = SubResource("RectangleShape2D_h4pf8")
+
 [node name="Cat" parent="." instance=ExtResource("1_s4ikg")]
-position = Vector2(576, 326)
+position = Vector2(493, 585)
+
+[node name="DialogueBox" parent="." instance=ExtResource("5_ntd08")]
+
+[node name="Radio" type="AudioStreamPlayer2D" parent="."]

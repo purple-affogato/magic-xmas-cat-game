@@ -17,9 +17,9 @@ func start_reading(array):
 func _process(delta):
 	if not visible:
 		return
-	if reading == true and Input.is_action_just_released("enter"):
+	if reading == true and Input.is_action_just_released("ui_accept"):
 		idx += 2
-		if idx == len(dialogue):
+		if idx >= len(dialogue):
 			reading = false
 			visible = false
 		else:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dr7xh8c4rxkav"]
+[gd_scene load_steps=3 format=3 uid="uid://dlhppyw3lsjyk"]
 
 [ext_resource type="Script" path="res://dialogue_box.gd" id="1_vqcml"]
 [ext_resource type="Texture2D" uid="uid://cdfwaba8c6lrp" path="res://Assets/dialogue box.png" id="2_u6ewp"]
@@ -12,27 +12,28 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vqcml")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(575, 123)
+scale = Vector2(7.24908, 8.45725)
+texture = ExtResource("2_u6ewp")
 
 [node name="Speaker" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_right = 536.0
-offset_bottom = 40.0
+offset_left = 149.0
+offset_top = 44.0
+offset_right = 685.0
+offset_bottom = 74.0
+theme_override_colors/default_color = Color(0.419608, 0.192157, 0.623529, 1)
+theme_override_font_sizes/normal_font_size = 20
 text = "(no name)"
 
 [node name="Dialogue" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 24.0
-offset_right = 452.0
-offset_bottom = 95.0
+offset_left = 150.0
+offset_top = 86.0
+offset_right = 964.0
+offset_bottom = 192.0
+theme_override_colors/default_color = Color(0.0509804, 0.0784314, 0.380392, 1)
+theme_override_font_sizes/normal_font_size = 20
 text = "(empty)"
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(669, 127)
-scale = Vector2(7.24908, 8.45725)
-texture = ExtResource("2_u6ewp")
