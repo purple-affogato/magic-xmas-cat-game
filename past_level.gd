@@ -22,25 +22,25 @@ var end_dia = [
 enum Phase {START, BATTLE, END}
 var ph
 var dia
-var enemy_cnt
+var player_hp
 
 func _process(delta):
 	if ph == Phase.START:
 		if !dia.reading:
 			dia.visible = false
 			ph = Phase.BATTLE
-			$Cat.set_physics_process(true)
+			$Cat.set_process(true)
 	elif ph == Phase.BATTLE:
 		spawn_enemies()
 		handle_foxes()
+		print(player_hp)
 			
 func spawn_enemies():
 	var fox = preload("res://fox.tscn").instantiate()
-	if enemy_cnt < 2:
+	if len(get_tree().get_nodes_in_group("firefox")) < 1:
 		add_child(fox)
 		fox.position = $SpawnPoint1.position
 		fox.add_to_group("firefox")
-		enemy_cnt += 1
 		
 
 func handle_foxes():
@@ -53,5 +53,5 @@ func _ready():
 	ph = Phase.START
 	dia = $DialogueBox
 	dia.start_reading(start_dia)
-	$Cat.set_physics_process(false)
-	enemy_cnt = 0
+	$Cat.set_process(false)
+	player_hp = 100

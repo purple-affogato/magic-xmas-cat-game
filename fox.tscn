@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b2q2igrgfiudi"]
+[gd_scene load_steps=16 format=3 uid="uid://b2q2igrgfiudi"]
 
 [ext_resource type="Script" path="res://fox.gd" id="1_ccn4b"]
 [ext_resource type="Texture2D" uid="uid://dhehstopuyif8" path="res://Assets/Fox.png" id="1_ndftn"]
@@ -58,7 +58,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xovkm")
 }],
-"loop": true,
+"loop": false,
 "name": &"fire",
 "speed": 5.0
 }, {
@@ -94,18 +94,36 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vf52o"]
 size = Vector2(56, 40)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f4elv"]
+size = Vector2(32, 58)
+
+[node name="Fox" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_ccn4b")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_i21yd")
-animation = &"walk"
-frame = 1
-frame_progress = 0.786907
+animation = &"fire"
+frame = 3
+frame_progress = 0.138893
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_vf52o")
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+
+[node name="Fire" type="Area2D" parent="."]
+
+[node name="AOE" type="CollisionShape2D" parent="Fire"]
+position = Vector2(-46, 0)
+shape = SubResource("RectangleShape2D_f4elv")
+disabled = true
+debug_color = Color(0.913725, 0.109804, 0.654902, 0.419608)
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="body_entered" from="Fire" to="." method="_on_fire_body_entered"]

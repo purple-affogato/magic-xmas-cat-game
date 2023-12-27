@@ -12,6 +12,9 @@ var idle
 var normal
 var skill
 var special
+var normal_hit
+var skill_hit
+var special_hit
 
 func get_input():
 	dir_cnt = 0
@@ -35,6 +38,7 @@ func get_input():
 		if Input.is_action_just_pressed("normal_attack"):
 			normal = true
 			$AnimatedSprite2D.play("Scratch")
+			$Scratch/AOE.disabled = false
 			idle = false
 		if Input.is_action_just_pressed("skill"):
 			skill = true
@@ -45,10 +49,10 @@ func get_input():
 			$AnimatedSprite2D.play("Fire")
 			idle = false
 
-func _physics_process(_delta):
+func _process(_delta):
 	get_input()
 	handle_attack_animation()
-	print($AnimatedSprite2D.animation)
+	#print($CollisionShape2D.position)
 	if is_attacking():
 		idle = false
 	elif dir_cnt > 2 or dir_cnt == 0 or (l == true and r == true) or (u == true and d == true):
@@ -93,6 +97,9 @@ func  _ready():
 	normal = false
 	skill = false
 	special = false
+	normal_hit = []
+	skill_hit = []
+	special_hit = []
 
 func is_attacking():
 	if normal or skill or special:
@@ -103,9 +110,19 @@ func handle_attack_animation():
 	if $AnimatedSprite2D.frame_progress < 1.0:
 		return
 	if $AnimatedSprite2D.animation == "Scratch":
+		for b in normal_hit:
+			b.hp -= 1
+		normal_hit = []
 		normal = false
+		$Scratch/AOE.disabled = true
 	elif $AnimatedSprite2D.animation == "Tail Whip":
 		skill = false
 	elif $AnimatedSprite2D.animation == "Fire":
 		special = false
 	$AnimatedSprite2D.play("Idle")
+
+
+func _on_scratch_body_entered(body):
+	#print(body.get_name())
+	if body.get_name() == "Fox":
+		normal_hit.append(body)
