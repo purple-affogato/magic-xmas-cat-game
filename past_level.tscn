@@ -76,9 +76,7 @@ position = Vector2(493, 585)
 [node name="DialogueBox" parent="." instance=ExtResource("5_ntd08")]
 
 [node name="SpawnPoint1" type="Marker2D" parent="."]
-visible = false
 position = Vector2(1162, 567)
 
 [node name="SpawnPoint2" type="Marker2D" parent="."]
-visible = false
 position = Vector2(1161, 611)
