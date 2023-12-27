@@ -25,18 +25,12 @@ var dia
 
 func _process(delta):
 	if ph == Phase.START:
-		if dia.visible:
-			handle_sfx()
-		elif !dia.reading:
+		if !dia.reading:
 			dia.visible = false
 			ph = Phase.BATTLE
 			$Cat.set_physics_process(true)
-
-func handle_sfx():
-	if ph == Phase.START:
-		#$Radio
-		return
-
+			
+			
 func _ready():
 	$Cat/AnimatedSprite2D.play('Idle')
 	ph = Phase.START

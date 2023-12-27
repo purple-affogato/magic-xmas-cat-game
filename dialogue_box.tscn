@@ -37,3 +37,6 @@ offset_bottom = 192.0
 theme_override_colors/default_color = Color(0.0509804, 0.0784314, 0.380392, 1)
 theme_override_font_sizes/normal_font_size = 20
 text = "(empty)"
+
+[node name="Radio" type="AudioStreamPlayer2D" parent="."]
+volume_db = 12.0

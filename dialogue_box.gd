@@ -25,3 +25,13 @@ func _process(delta):
 		else:
 			label.text = dialogue[idx]
 			speaker.text = dialogue[idx-1]
+			handle_sfx()
+			
+func handle_sfx():
+	var t = $Dialogue.text
+	if t == "*Boom*":
+		$Radio.stream = load("res://Assets/vine_boom.wav")
+	else:
+		return
+	$Radio.play()
+	#print($Radio.playing)
