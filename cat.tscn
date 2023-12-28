@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://betpqqnfkgqs5"]
+[gd_scene load_steps=29 format=3 uid="uid://betpqqnfkgqs5"]
 
 [ext_resource type="Texture2D" uid="uid://qrmjy67tyad1" path="res://Assets/Cat.png" id="1_1rl5w"]
 [ext_resource type="Script" path="res://cat.gd" id="1_b8a80"]
@@ -139,7 +139,7 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 5.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ffocn")
 }, {
 "duration": 1.0,
@@ -173,7 +173,7 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 5.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_eojfw")
 }, {
 "duration": 1.0,
@@ -196,6 +196,9 @@ size = Vector2(54, 44)
 [sub_resource type="CircleShape2D" id="CircleShape2D_iodpr"]
 radius = 19.105
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2w5ku"]
+size = Vector2(52.2414, 48.9655)
+
 [node name="Cat" type="CharacterBody2D"]
 scale = Vector2(1.45, 1.45)
 script = ExtResource("1_b8a80")
@@ -203,9 +206,7 @@ script = ExtResource("1_b8a80")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_igjy3")
-animation = &"Scratch"
-frame = 3
-frame_progress = 1.0
+animation = &"Tail Whip"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-5, 4)
@@ -217,22 +218,28 @@ enabled = false
 [node name="Scratch" type="Area2D" parent="."]
 
 [node name="AOE" type="CollisionShape2D" parent="Scratch"]
+visible = false
 position = Vector2(38, 15)
 shape = SubResource("CircleShape2D_iodpr")
 disabled = true
 debug_color = Color(0.815686, 0.321569, 0.631373, 0.419608)
 
-[node name="OuchText" type="RichTextLabel" parent="."]
-visible = false
-offset_left = -20.0
-offset_top = -43.0
-offset_right = 24.0
-offset_bottom = -16.0
-text = "ouch"
-
 [node name="OuchTimer" type="Timer" parent="."]
 wait_time = 1.5
 one_shot = true
 
+[node name="Whip" type="Area2D" parent="."]
+
+[node name="AOE" type="CollisionShape2D" parent="Whip"]
+position = Vector2(43.5345, 4.48276)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_2w5ku")
+disabled = true
+debug_color = Color(0.901961, 0.223529, 0.533333, 0.419608)
+
+[node name="DMGPosition" type="Marker2D" parent="."]
+position = Vector2(0, -35.8621)
+
 [connection signal="body_entered" from="Scratch" to="." method="_on_scratch_body_entered"]
 [connection signal="timeout" from="OuchTimer" to="." method="_on_ouch_timer_timeout"]
+[connection signal="body_entered" from="Whip" to="." method="_on_whip_body_entered"]
