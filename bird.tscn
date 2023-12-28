@@ -73,7 +73,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ldvcl"]
-size = Vector2(42, 31.5)
+size = Vector2(61, 34.75)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_758li"]
 radius = 20.0998
@@ -88,8 +88,7 @@ animation = &"fly_idle"
 frame_progress = 0.906988
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-3, 6)
+position = Vector2(0.5, 7.625)
 shape = SubResource("RectangleShape2D_ldvcl")
 
 [node name="DeathTimer" type="Timer" parent="."]
