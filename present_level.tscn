@@ -1,3 +1,50 @@
-[gd_scene format=3 uid="uid://cpgg2auee7lft"]
+[gd_scene load_steps=9 format=3 uid="uid://cpgg2auee7lft"]
+
+[ext_resource type="Script" path="res://present_level.gd" id="1_8bpqe"]
+[ext_resource type="Texture2D" uid="uid://dnl5x6pq4mqta" path="res://Assets/present bg w sky idk.png" id="1_64jft"]
+[ext_resource type="PackedScene" uid="uid://dlhppyw3lsjyk" path="res://dialogue_box.tscn" id="2_ko05i"]
+[ext_resource type="PackedScene" uid="uid://betpqqnfkgqs5" path="res://cat.tscn" id="3_y3kcs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eoh1v"]
+size = Vector2(92.5, 672.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c0b7s"]
+size = Vector2(1168, 412)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bn8h3"]
+size = Vector2(72, 735)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_42r0g"]
+size = Vector2(1165.5, 47)
 
 [node name="PresentLevel" type="Node2D"]
+script = ExtResource("1_8bpqe")
+
+[node name="bg" type="Sprite2D" parent="."]
+position = Vector2(577.5, 325.5)
+scale = Vector2(1.01302, 1.02315)
+texture = ExtResource("1_64jft")
+
+[node name="DialogueBox" parent="." instance=ExtResource("2_ko05i")]
+visible = false
+
+[node name="Cat" parent="." instance=ExtResource("3_y3kcs")]
+position = Vector2(198, 496)
+
+[node name="borders" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="borders"]
+position = Vector2(-42, 328)
+shape = SubResource("RectangleShape2D_eoh1v")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="borders"]
+position = Vector2(581, 156)
+shape = SubResource("RectangleShape2D_c0b7s")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="borders"]
+position = Vector2(1186, 340.5)
+shape = SubResource("RectangleShape2D_bn8h3")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="borders"]
+position = Vector2(584.25, 669)
+shape = SubResource("RectangleShape2D_42r0g")
