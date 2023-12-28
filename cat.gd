@@ -66,7 +66,8 @@ func _process(_delta):
 	elif !is_attacking():
 		if r == true:
 			if flip:
-				scale.x = -1
+				scale.x = -scale.x
+				$OuchText.scale.x = -1
 				flip = false
 			if d == false and u == false:
 				velocity.x = SPEED
@@ -74,7 +75,8 @@ func _process(_delta):
 				velocity.x = SPEED * sqrt(0.5)
 		elif l == true:
 			if !flip:
-				scale.x = -1
+				scale.x = -scale.x
+				$OuchText.scale.x = -1
 				flip = true
 			if d == false and u == false:
 				velocity.x = -SPEED
@@ -110,9 +112,6 @@ func handle_attack_animation():
 	if $AnimatedSprite2D.frame_progress < 1.0:
 		return
 	if $AnimatedSprite2D.animation == "Scratch":
-		for b in normal_hit:
-			b.hp -= 1
-		normal_hit = []
 		normal = false
 		$Scratch/AOE.disabled = true
 	elif $AnimatedSprite2D.animation == "Tail Whip":
@@ -125,4 +124,8 @@ func handle_attack_animation():
 func _on_scratch_body_entered(body):
 	#print(body.get_name())
 	if body.get_name() == "Fox":
-		normal_hit.append(body)
+		body.hp -= 1
+
+
+func _on_ouch_timer_timeout():
+	$OuchText.visible = false

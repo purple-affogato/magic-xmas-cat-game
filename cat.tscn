@@ -122,7 +122,7 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_x8dwx")
 }, {
 "duration": 1.0,
@@ -131,7 +131,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dcx7p")
 }, {
-"duration": 5.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_8ks50")
 }],
 "loop": false,
@@ -191,12 +191,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3bkw1"]
-size = Vector2(47, 40)
+size = Vector2(54, 44)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iodpr"]
-radius = 15.1327
+radius = 19.105
 
 [node name="Cat" type="CharacterBody2D"]
+scale = Vector2(1.45, 1.45)
 script = ExtResource("1_b8a80")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -207,7 +208,7 @@ frame = 3
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-5.5, 4)
+position = Vector2(-5, 4)
 shape = SubResource("RectangleShape2D_3bkw1")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -216,9 +217,22 @@ enabled = false
 [node name="Scratch" type="Area2D" parent="."]
 
 [node name="AOE" type="CollisionShape2D" parent="Scratch"]
-position = Vector2(35, 16)
+position = Vector2(38, 15)
 shape = SubResource("CircleShape2D_iodpr")
 disabled = true
 debug_color = Color(0.815686, 0.321569, 0.631373, 0.419608)
 
+[node name="OuchText" type="RichTextLabel" parent="."]
+visible = false
+offset_left = -20.0
+offset_top = -43.0
+offset_right = 24.0
+offset_bottom = -16.0
+text = "ouch"
+
+[node name="OuchTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
 [connection signal="body_entered" from="Scratch" to="." method="_on_scratch_body_entered"]
+[connection signal="timeout" from="OuchTimer" to="." method="_on_ouch_timer_timeout"]

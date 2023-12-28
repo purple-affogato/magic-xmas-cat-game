@@ -9,45 +9,44 @@ var atk
 
 func _process(_delta):
 	if hp <= 0:
-		#print('oof')
+		get_parent().kills += 1
 		queue_free()
-	if abs(playerX - self.position.x) >= 80:
+	if abs(playerX - self.position.x) >= 170:
 		$AnimatedSprite2D.play("walk")
 		if self.position.x > playerX: # go left
 			velocity.x = -SPEED
 			if flip:
-				scale.x = -1
+				scale.x = -scale.x
 				flip = false
 		else:
 			if !flip:
-				scale.x = -1
+				scale.x = -scale.x
 				flip = true
 			velocity.x = SPEED
 	else:
 		velocity.x = 0
-		if $AttackTimer.time_left == 0:
-			$AnimatedSprite2D.play("fire")
-			$Fire/AOE.disabled = false
+		if atk:
 			$AttackTimer.start()
 			atk = false
-		
-	handle_atk()
+	handle_atk_animation()
 	move_and_slide()
 
 func _ready():
 	$AnimatedSprite2D.play("idle")
 	atk = true
 
-func handle_atk():
-	if $AnimatedSprite2D.frame_progress == 1.0:
-		atk = false
+func handle_atk_animation():
+	if $AnimatedSprite2D.animation == "fire" and $AnimatedSprite2D.frame_progress == 1.0:
 		$AnimatedSprite2D.play("idle")
 		$Fire/AOE.disabled = true
 
 func _on_attack_timer_timeout():
-	atk = true
-
+	$AnimatedSprite2D.play("fire")
+	$Fire/AOE.disabled = false
 
 func _on_fire_body_entered(body):
 	if body.get_name() == 'Cat':
 		body.get_parent().player_hp -= 1
+		body.get_node("OuchText").visible = true
+		body.get_node("OuchTimer").start()
+		

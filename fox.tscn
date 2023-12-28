@@ -3,10 +3,6 @@
 [ext_resource type="Script" path="res://fox.gd" id="1_ccn4b"]
 [ext_resource type="Texture2D" uid="uid://dhehstopuyif8" path="res://Assets/Fox.png" id="1_ndftn"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_15dy3"]
-atlas = ExtResource("1_ndftn")
-region = Rect2(0, 100, 75, 100)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_7837n"]
 atlas = ExtResource("1_ndftn")
 region = Rect2(75, 100, 75, 100)
@@ -18,6 +14,10 @@ region = Rect2(150, 100, 75, 100)
 [sub_resource type="AtlasTexture" id="AtlasTexture_xovkm"]
 atlas = ExtResource("1_ndftn")
 region = Rect2(225, 100, 75, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15dy3"]
+atlas = ExtResource("1_ndftn")
+region = Rect2(0, 100, 75, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_godrl"]
 atlas = ExtResource("1_ndftn")
@@ -46,9 +46,6 @@ region = Rect2(225, 0, 75, 100)
 [sub_resource type="SpriteFrames" id="SpriteFrames_i21yd"]
 animations = [{
 "frames": [{
-"duration": 5.0,
-"texture": SubResource("AtlasTexture_15dy3")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7837n")
 }, {
@@ -57,6 +54,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xovkm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15dy3")
 }],
 "loop": false,
 "name": &"fire",
@@ -92,12 +92,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vf52o"]
-size = Vector2(56, 40)
+size = Vector2(66, 51)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f4elv"]
 size = Vector2(32, 58)
 
 [node name="Fox" type="CharacterBody2D"]
+scale = Vector2(1.53, 1.53)
 motion_mode = 1
 script = ExtResource("1_ccn4b")
 
@@ -106,15 +107,14 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_i21yd")
 animation = &"fire"
 frame = 3
-frame_progress = 0.138893
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-1, 0)
+position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_vf52o")
 
 [node name="AttackTimer" type="Timer" parent="."]
-wait_time = 6.0
+wait_time = 3.5
 one_shot = true
 
 [node name="Fire" type="Area2D" parent="."]
@@ -124,6 +124,16 @@ position = Vector2(-46, 0)
 shape = SubResource("RectangleShape2D_f4elv")
 disabled = true
 debug_color = Color(0.913725, 0.109804, 0.654902, 0.419608)
+
+[node name="OuchTimer" type="Timer" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
+offset_left = -24.0
+offset_top = -49.0
+offset_right = 36.0
+offset_bottom = -25.0
+text = "oof"
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="body_entered" from="Fire" to="." method="_on_fire_body_entered"]
