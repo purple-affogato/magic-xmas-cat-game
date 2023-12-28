@@ -92,7 +92,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vf52o"]
-size = Vector2(66, 51)
+size = Vector2(68.9477, 51)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f4elv"]
 size = Vector2(32, 58)
@@ -110,7 +110,7 @@ frame = 3
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1.5)
+position = Vector2(1.47386, 1.5)
 shape = SubResource("RectangleShape2D_vf52o")
 
 [node name="AttackTimer" type="Timer" parent="."]
