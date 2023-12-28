@@ -120,8 +120,8 @@ func handle_attack_animation():
 
 
 func _on_scratch_body_entered(body):
-	#print(body.get_name())
-	if body.get_name() == "Fox" or body.get_name() == "Bird":
+	print(body.name)
+	if body.name.contains("Fox") or body.name.contains("Bird"):
 		body.hp -= 1
 		var dmg = preload("res://damage.tscn").instantiate()
 		body.add_child(dmg)
@@ -136,7 +136,8 @@ func _on_ouch_timer_timeout():
 
 
 func _on_whip_body_entered(body):
-	if body.get_name() == "Fox" or body.get_name() == "Bird":
+	#print(body.get_name())
+	if body.name.contains("Fox") or body.name.contains("Bird"):
 		body.hp -= 1
 		var dmg = preload("res://damage.tscn").instantiate()
 		body.add_child(dmg)
@@ -147,7 +148,8 @@ func _on_whip_body_entered(body):
 
 
 func _on_water_body_entered(body):
-	if body.get_name() == "Fox" or body.get_name() == "Bird":
+	#print(body.name)
+	if body.name.contains("Fox") or body.name.contains("Bird"):
 		body.hp -= 1
 		var dmg = preload("res://damage.tscn").instantiate()
 		body.add_child(dmg)
