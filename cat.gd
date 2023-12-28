@@ -11,7 +11,8 @@ var l
 var idle
 var normal
 var skill
-var special
+var water
+var fire
 
 func get_input():
 	dir_cnt = 0
@@ -43,8 +44,9 @@ func get_input():
 			$Whip/AOE.disabled = false
 			idle = false
 		if Input.is_action_just_pressed("water_skill") and get_parent().name != "PastLevel":
-			special = true
+			water = true
 			$AnimatedSprite2D.play("Water")
+			$Water/AOE.disabled = false
 			idle = false
 
 func _process(_delta):
@@ -94,10 +96,11 @@ func _process(_delta):
 func  _ready():
 	normal = false
 	skill = false
-	special = false
+	water = false
+	fire = false
 
 func is_attacking():
-	if normal or skill or special:
+	if normal or skill or water or fire:
 		return true
 	return false
 	
@@ -110,8 +113,9 @@ func handle_attack_animation():
 	elif $AnimatedSprite2D.animation == "Tail Whip":
 		skill = false
 		$Whip/AOE.disabled = true
-	elif $AnimatedSprite2D.animation == "Fire":
-		special = false
+	elif $AnimatedSprite2D.animation == "Water":
+		water = false
+		$Water/AOE.disabled = true
 	$AnimatedSprite2D.play("Idle")
 
 
@@ -132,6 +136,17 @@ func _on_ouch_timer_timeout():
 
 
 func _on_whip_body_entered(body):
+	if body.get_name() == "Fox" or body.get_name() == "Bird":
+		body.hp -= 1
+		var dmg = preload("res://damage.tscn").instantiate()
+		body.add_child(dmg)
+		dmg.get_node("Sprite2D").frame = 1
+		dmg.position = body.get_node("DMGPosition").position
+		dmg.add_to_group("dmg")
+		body.get_node("OuchTimer").start()
+
+
+func _on_water_body_entered(body):
 	if body.get_name() == "Fox" or body.get_name() == "Bird":
 		body.hp -= 1
 		var dmg = preload("res://damage.tscn").instantiate()
