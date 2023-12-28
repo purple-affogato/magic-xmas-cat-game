@@ -4,7 +4,7 @@ extends CharacterBody2D
 const SPEED = 200.0
 var playerX
 var flip = false
-@onready var hp = 2
+var hp
 var atk
 
 func _process(_delta):
@@ -33,6 +33,7 @@ func _process(_delta):
 func _ready():
 	$AnimatedSprite2D.play("idle")
 	atk = true
+	hp = 2
 
 func handle_atk_animation():
 	if $AnimatedSprite2D.animation == "fire" and $AnimatedSprite2D.frame_progress == 1.0:
