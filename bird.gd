@@ -48,3 +48,14 @@ func _on_death_timer_timeout():
 func _on_attack_timer_timeout():
 	$AnimatedSprite2D.play("water")
 	$Water/AOE.disabled = false
+
+
+func _on_water_body_entered(body):
+	if body.get_name() == 'Cat':
+		body.get_parent().player_hp -= 1
+		body.get_node("OuchTimer").start()
+		var dmg = preload("res://damage.tscn").instantiate()
+		body.add_child(dmg)
+		dmg.get_node("Sprite2D").frame = 1
+		dmg.position = body.get_node("DMGPosition").position
+		dmg.add_to_group("dmg")
