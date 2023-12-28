@@ -1,8 +1,8 @@
 extends Node2D
 
 var start_dia = [
-	" ","The Past (click ENTER)",
-	" ","Christmas Day, 2022",
+	"(Click ENTER)","The Past",
+	"Date","Christmas Day, 2022",
 	"Cat", "*opening presents* OMG, is this the latest state-of-the-art ball of yarn, specially designed for only the best of cat play times!",
 	"Owner", "I’m glad you like the present. :D",
 	"Owner", "But I also have another special gift for you. Just wait while I go get it.",
@@ -10,7 +10,11 @@ var start_dia = [
 	" ", "*Owner walks away*",
 	" ", "*Boom*",
 	"Cat", "!!! What was that sound?!",
-	"Owner", "Be careful! The enemies of Christmas are attacking us!"]
+	"Owner", "Be careful! The enemies of Christmas are attacking us!",
+	"Tutorial","Use the arrow keys to move!",
+	"Tutorial","Attack with Q and E!",
+	"Tutorial", "But most importantly, don't die!"
+	]
 var end_dia = [
 	" ", "*Screaming*",
 	"Cat", "Oh no! What happened?!",
@@ -23,6 +27,7 @@ enum Phase {START, BATTLE, END}
 var ph
 var dia
 var player_hp
+var kills
 
 func _process(delta):
 	if ph == Phase.START:
@@ -31,9 +36,20 @@ func _process(delta):
 			ph = Phase.BATTLE
 			$Cat.set_process(true)
 	elif ph == Phase.BATTLE:
+		print(player_hp," ",kills)
+		if kills >= 3:
+			remove_enemies()
+			$Cat.set_process(false)
+			ph = Phase.END
+			return
 		spawn_enemies()
 		handle_foxes()
-		print(player_hp)
+	else:
+		if !dia.reading:
+			get_tree().change_scene_to_file("res://present_level.tscn")
+		elif !dia.visible:
+			dia.visible = true
+			dia.start_reading(end_dia)
 			
 func spawn_enemies():
 	var fox = preload("res://fox.tscn").instantiate()
@@ -42,6 +58,10 @@ func spawn_enemies():
 		fox.position = $SpawnPoint1.position
 		fox.add_to_group("firefox")
 		
+func remove_enemies():
+	var foxes = get_tree().get_nodes_in_group("firefox")
+	for f in foxes:
+		f.queue_free()
 
 func handle_foxes():
 	var foxes = get_tree().get_nodes_in_group("firefox")
@@ -55,3 +75,4 @@ func _ready():
 	dia.start_reading(start_dia)
 	$Cat.set_process(false)
 	player_hp = 100
+	kills = 0
