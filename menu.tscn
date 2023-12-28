@@ -98,16 +98,16 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -232.0
-offset_top = 80.0
-offset_right = 232.0
-offset_bottom = 168.0
+offset_left = -224.0
+offset_top = 88.0
+offset_right = 224.0
+offset_bottom = 176.0
 grow_horizontal = 2
 theme = SubResource("Theme_ex1bn")
 theme_override_fonts/font = ExtResource("8_xuaeo")
 theme_override_font_sizes/font_size = 70
 theme_override_styles/normal = SubResource("StyleBoxFlat_n55ai")
-text = "Omg Cat game !!!"
+text = "Omg Cat game!!!"
 
 [connection signal="pressed" from="play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="quit" to="." method="_on_play_pressed"]
