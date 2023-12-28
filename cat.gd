@@ -67,7 +67,6 @@ func _process(_delta):
 		if r == true:
 			if flip:
 				scale.x = -scale.x
-				$OuchText.scale.x = -1
 				flip = false
 			if d == false and u == false:
 				velocity.x = SPEED
@@ -76,7 +75,6 @@ func _process(_delta):
 		elif l == true:
 			if !flip:
 				scale.x = -scale.x
-				$OuchText.scale.x = -1
 				flip = true
 			if d == false and u == false:
 				velocity.x = -SPEED
@@ -125,7 +123,12 @@ func _on_scratch_body_entered(body):
 	#print(body.get_name())
 	if body.get_name() == "Fox":
 		body.hp -= 1
-
+		var dmg = preload("res://damage.tscn").instantiate()
+		body.add_child(dmg)
+		dmg.get_node("Sprite2D").frame = 1
+		dmg.position = body.get_node("DMGPosition").position
+		dmg.add_to_group("dmg")
+		body.get_node("OuchTimer").start()
 
 func _on_ouch_timer_timeout():
 	$OuchText.visible = false

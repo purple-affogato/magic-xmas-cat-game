@@ -8,9 +8,8 @@ var flip = false
 var atk
 
 func _process(_delta):
-	if hp <= 0:
-		get_parent().kills += 1
-		queue_free()
+	if hp <= 0 and $DeathTimer.time_left == 0:
+		$DeathTimer.start()
 	if abs(playerX - self.position.x) >= 170:
 		$AnimatedSprite2D.play("walk")
 		if self.position.x > playerX: # go left
@@ -50,3 +49,13 @@ func _on_fire_body_entered(body):
 		body.get_node("OuchText").visible = true
 		body.get_node("OuchTimer").start()
 		
+
+
+func _on_ouch_timer_timeout():
+	for i in get_tree().get_nodes_in_group("dmg"):
+		i.queue_free()
+
+
+func _on_death_timer_timeout():
+	get_parent().kills += 1
+	queue_free()

@@ -40,6 +40,8 @@ func _process(delta):
 		if kills >= 3:
 			remove_enemies()
 			$Cat.set_process(false)
+			dia.visible = true
+			dia.start_reading(end_dia)
 			ph = Phase.END
 			return
 		spawn_enemies()
@@ -47,9 +49,6 @@ func _process(delta):
 	else:
 		if !dia.reading:
 			get_tree().change_scene_to_file("res://present_level.tscn")
-		elif !dia.visible:
-			dia.visible = true
-			dia.start_reading(end_dia)
 			
 func spawn_enemies():
 	var fox = preload("res://fox.tscn").instantiate()

@@ -1,11 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://p400xhakb5af"]
+[gd_scene load_steps=2 format=3 uid="uid://cgoj6fytiwe1m"]
 
 [ext_resource type="Texture2D" uid="uid://b7t2uvd1vn6im" path="res://Assets/damage.png" id="1_lmhpd"]
 
-[node name="Damage" type="Node"]
+[node name="Damage" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
+scale = Vector2(3.135, 3.135)
 texture = ExtResource("1_lmhpd")
 vframes = 11
-frame = 5
