@@ -52,11 +52,11 @@ func _process(delta):
 	
 			
 func spawn_enemies():
-	var points = get_tree().get_nodes_in_group("spawn")
-	var pos = points[randi() % points.size()]
-	var fox = preload("res://fox.tscn").instantiate()
 	if len(get_tree().get_nodes_in_group("firefox")) < 2:
-		add_child(fox)
+		var points = get_tree().get_nodes_in_group("spawn")
+		var pos = points[randi() % points.size()].position
+		var fox = preload("res://fox.tscn").instantiate()
+		add_child(fox, true)
 		fox.position = pos
 		fox.add_to_group("firefox")
 		
