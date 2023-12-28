@@ -35,6 +35,7 @@ func handle_atk_animation():
 	if $AnimatedSprite2D.animation == "water" and $AnimatedSprite2D.frame_progress == 1.0:
 		$AnimatedSprite2D.play("fly_idle")
 		$Water/AOE.disabled = true
+		atk = true
 
 func _ready():
 	hp = 1

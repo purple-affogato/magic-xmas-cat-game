@@ -39,6 +39,7 @@ func handle_atk_animation():
 	if $AnimatedSprite2D.animation == "fire" and $AnimatedSprite2D.frame_progress == 1.0:
 		$AnimatedSprite2D.play("idle")
 		$Fire/AOE.disabled = true
+		atk = true
 
 func _on_attack_timer_timeout():
 	$AnimatedSprite2D.play("fire")
