@@ -194,13 +194,13 @@ animations = [{
 size = Vector2(54, 44)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iodpr"]
-radius = 19.105
+radius = 25.4769
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2w5ku"]
-size = Vector2(52.2414, 48.9655)
+size = Vector2(41.8966, 46.8966)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g1c2r"]
-size = Vector2(40, 31.3793)
+size = Vector2(40, 42.4138)
 
 [node name="Cat" type="CharacterBody2D"]
 scale = Vector2(1.45, 1.45)
@@ -222,7 +222,7 @@ enabled = false
 
 [node name="AOE" type="CollisionShape2D" parent="Scratch"]
 visible = false
-position = Vector2(38, 15)
+position = Vector2(43.4483, 8.27586)
 shape = SubResource("CircleShape2D_iodpr")
 disabled = true
 debug_color = Color(0.815686, 0.321569, 0.631373, 0.419608)
@@ -231,7 +231,7 @@ debug_color = Color(0.815686, 0.321569, 0.631373, 0.419608)
 
 [node name="AOE" type="CollisionShape2D" parent="Whip"]
 visible = false
-position = Vector2(43.5345, 4.48276)
+position = Vector2(38.3621, 5.51724)
 scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_2w5ku")
 disabled = true
@@ -240,7 +240,8 @@ debug_color = Color(0.901961, 0.223529, 0.533333, 0.419608)
 [node name="Water" type="Area2D" parent="."]
 
 [node name="AOE" type="CollisionShape2D" parent="Water"]
-position = Vector2(38.7931, 4.13793)
+visible = false
+position = Vector2(44.3103, 4.13793)
 rotation = 1.5708
 scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_g1c2r")
