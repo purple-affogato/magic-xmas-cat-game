@@ -79,11 +79,8 @@ shape = SubResource("RectangleShape2D_vy3au")
 
 [node name="DialogueBox" parent="." instance=ExtResource("5_ntd08")]
 
-[node name="SpawnPoint1" type="Marker2D" parent="."]
-position = Vector2(1156, 527)
-
-[node name="SpawnPoint2" type="Marker2D" parent="."]
-position = Vector2(1161, 611)
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(1158, 567)
 
 [node name="Cat" parent="." instance=ExtResource("1_s4ikg")]
 position = Vector2(493, 585)

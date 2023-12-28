@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://cc5gph0lp0ay1"]
+[gd_scene load_steps=14 format=3 uid="uid://c2egyfcct04yu"]
 
+[ext_resource type="Script" path="res://bird.gd" id="1_jylmp"]
 [ext_resource type="Texture2D" uid="uid://8gjs8d8girkp" path="res://Assets/Bird.png" id="1_p6fn1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u34km"]
@@ -66,7 +67,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_f8nj3")
 }],
-"loop": true,
+"loop": false,
 "name": &"water",
 "speed": 5.0
 }]
@@ -74,15 +75,44 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ldvcl"]
 size = Vector2(42, 31.5)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_758li"]
+radius = 20.0998
+
+[node name="Bird" type="CharacterBody2D"]
+script = ExtResource("1_jylmp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_6v0ht")
 animation = &"fly_idle"
-frame_progress = 0.44979
+frame_progress = 0.906988
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2(-3, 6)
 shape = SubResource("RectangleShape2D_ldvcl")
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="Water" type="Area2D" parent="."]
+
+[node name="AOE" type="CollisionShape2D" parent="Water"]
+position = Vector2(38, 11)
+shape = SubResource("CircleShape2D_758li")
+disabled = true
+debug_color = Color(0.866667, 0.227451, 0.686275, 0.419608)
+
+[node name="OuchTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="DMGPosition" type="Marker2D" parent="."]
+position = Vector2(0, -24)
+
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

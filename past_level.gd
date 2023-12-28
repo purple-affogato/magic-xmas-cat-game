@@ -1,7 +1,7 @@
 extends Node2D
 
 var start_dia = [
-	"(Click ENTER)","The Past",
+	"(Press ENTER)","The Past",
 	"Date","Christmas Day, 2022",
 	"Cat", "*opening presents* OMG, is this the latest state-of-the-art ball of yarn, specially designed for only the best of cat play times!",
 	"Owner", "I’m glad you like the present. :D",
@@ -12,7 +12,7 @@ var start_dia = [
 	"Cat", "!!! What was that sound?!",
 	"Owner", "Be careful! The enemies of Christmas are attacking us!",
 	"Tutorial","Use the arrow keys to move!",
-	"Tutorial","Attack with Q and E!",
+	"Tutorial","Attack by clicking Q and W!",
 	"Tutorial", "But most importantly, don't die!"
 	]
 var end_dia = [
@@ -45,27 +45,27 @@ func _process(delta):
 			ph = Phase.END
 			return
 		spawn_enemies()
-		handle_foxes()
+		handle_birds()
 	else:
 		if !dia.reading:
 			get_tree().change_scene_to_file("res://present_level.tscn")
 			
 func spawn_enemies():
-	var fox = preload("res://fox.tscn").instantiate()
-	if len(get_tree().get_nodes_in_group("firefox")) < 1:
-		add_child(fox)
-		fox.position = $SpawnPoint1.position
-		fox.add_to_group("firefox")
+	var bird = preload("res://bird.tscn").instantiate()
+	if len(get_tree().get_nodes_in_group("waterbird")) < 1:
+		add_child(bird)
+		bird.position = $SpawnPoint.position
+		bird.add_to_group("waterbird")
 		
 func remove_enemies():
-	var foxes = get_tree().get_nodes_in_group("firefox")
-	for f in foxes:
-		f.queue_free()
+	var birds = get_tree().get_nodes_in_group("waterbird")
+	for b in birds:
+		b.queue_free()
 
-func handle_foxes():
-	var foxes = get_tree().get_nodes_in_group("firefox")
-	for f in foxes:
-		f.playerX = $Cat.position.x
+func handle_birds():
+	var birds = get_tree().get_nodes_in_group("waterbird")
+	for b in birds:
+		b.playerX = $Cat.position.x
 
 func _ready():
 	$Cat/AnimatedSprite2D.play('Idle')
