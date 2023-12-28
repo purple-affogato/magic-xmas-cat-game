@@ -25,12 +25,6 @@ position = Vector2(577.5, 325.5)
 scale = Vector2(1.01302, 1.02315)
 texture = ExtResource("1_64jft")
 
-[node name="DialogueBox" parent="." instance=ExtResource("2_ko05i")]
-visible = false
-
-[node name="Cat" parent="." instance=ExtResource("3_y3kcs")]
-position = Vector2(198, 496)
-
 [node name="borders" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="borders"]
@@ -48,3 +42,12 @@ shape = SubResource("RectangleShape2D_bn8h3")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="borders"]
 position = Vector2(584.25, 669)
 shape = SubResource("RectangleShape2D_42r0g")
+
+[node name="DialogueBox" parent="." instance=ExtResource("2_ko05i")]
+
+[node name="Cat" parent="." instance=ExtResource("3_y3kcs")]
+position = Vector2(198, 496)
+
+[node name="SpawnPoint1" type="Marker2D" parent="." groups=["spawn"]]
+
+[node name="SpawnPoint2" type="Marker2D" parent="." groups=["spawn"]]
