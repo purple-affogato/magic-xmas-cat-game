@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqxgnyk8eyqvy"]
+
+[ext_resource type="FontFile" uid="uid://3iebfyny3uoe" path="res://Assets/DK Jambo.otf" id="1_8i4uj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4vtnr"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Theme" id="Theme_gpj60"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cj5bl"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.847059, 0.847059, 0.847059, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kxdrd"]
+bg_color = Color(0.756863, 0.415686, 0.482353, 0.941176)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 5
+border_width_bottom = 3
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[node name="Node" type="Node"]
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_left = -240.0
+offset_top = -32.0
+offset_right = -184.0
+offset_bottom = -8.0
+theme_override_fonts/font = ExtResource("1_8i4uj")
+theme_override_styles/normal = SubResource("StyleBoxFlat_4vtnr")
+text = "HEALTH"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -240.0
+offset_top = -8.0
+offset_right = 248.0
+offset_bottom = 25.0
+theme = SubResource("Theme_gpj60")
+theme_override_styles/background = SubResource("StyleBoxFlat_cj5bl")
+theme_override_styles/fill = SubResource("StyleBoxFlat_kxdrd")
+value = 60.0
