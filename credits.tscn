@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://6kmnseidoq4t"]
+[gd_scene load_steps=13 format=3 uid="uid://6kmnseidoq4t"]
 
 [ext_resource type="Script" path="res://ParallaxBackground.gd" id="1_hpnfs"]
 [ext_resource type="Texture2D" uid="uid://bic6cg2my1cu1" path="res://Assets/Background.png" id="2_cybxe"]
@@ -10,10 +10,15 @@
 
 [sub_resource type="Theme" id="Theme_buau1"]
 
-[sub_resource type="Theme" id="Theme_wkg23"]
+[sub_resource type="Theme" id="Theme_6t4xg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_skowv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Theme" id="Theme_vc382"]
 default_font = ExtResource("5_2v50e")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t8pa8"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3wg3g"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Credits" type="Node"]
@@ -66,40 +71,42 @@ theme_override_fonts/font = ExtResource("5_2v50e")
 theme_override_font_sizes/font_size = 43
 text = "BACK"
 
-[node name="credits" type="TextEdit" parent="."]
+[node name="Credits" type="RichTextLabel" parent="."]
 texture_filter = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -96.0
 offset_top = 80.0
-offset_right = 104.0
-offset_bottom = 168.0
+offset_right = 108.0
+offset_bottom = 152.0
 grow_horizontal = 2
-theme = SubResource("Theme_wkg23")
-theme_override_fonts/font = ExtResource("6_rvceo")
-theme_override_font_sizes/font_size = 70
-theme_override_styles/normal = SubResource("StyleBoxFlat_t8pa8")
+theme = SubResource("Theme_6t4xg")
+theme_override_fonts/normal_font = ExtResource("6_rvceo")
+theme_override_font_sizes/normal_font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxFlat_skowv")
 text = "Credits"
+drag_and_drop_selection_enabled = false
 
-[node name="text" type="TextEdit" parent="."]
+[node name="Text" type="RichTextLabel" parent="."]
 texture_filter = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -320.0
-offset_top = 176.0
+offset_top = 192.0
 offset_right = 328.0
-offset_bottom = 440.0
+offset_bottom = 512.0
 grow_horizontal = 2
-theme = SubResource("Theme_wkg23")
-theme_override_fonts/font = ExtResource("5_2v50e")
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_t8pa8")
+theme = SubResource("Theme_vc382")
+theme_override_fonts/normal_font = ExtResource("5_2v50e")
+theme_override_font_sizes/normal_font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_3wg3g")
 text = "This game is made by Ivy Zhuang & Danya Cheng
 -------------------------------------------
 					coding - Ivy & Danya
 					story/dialogue - Ivy
 						assets - Danya"
+drag_and_drop_selection_enabled = false
 
 [connection signal="pressed" from="back button" to="ParallaxBackground" method="_on_back_button_pressed"]
