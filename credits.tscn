@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://w8l5nejfp5dd" path="res://Assets/Mountain 2.png" id="3_7xskh"]
 [ext_resource type="Texture2D" uid="uid://bt3fbpgyk8gx6" path="res://Assets/Mountain 1.png" id="4_0kkla"]
 [ext_resource type="FontFile" uid="uid://3iebfyny3uoe" path="res://Assets/DK Jambo.otf" id="5_2v50e"]
-[ext_resource type="Texture2D" uid="uid://crkaj8uoswu5y" path="res://Assets/menu button.png" id="5_awnod"]
+[ext_resource type="Texture2D" uid="uid://c6iw1el647i65" path="res://Assets/menu button.png" id="5_awnod"]
 [ext_resource type="FontFile" uid="uid://dl0bqyvshtwpm" path="res://Assets/Chicago.otf" id="6_rvceo"]
 
 [sub_resource type="Theme" id="Theme_6t4xg"]
@@ -86,9 +86,9 @@ theme = SubResource("Theme_vc382")
 theme_override_fonts/normal_font = ExtResource("5_2v50e")
 theme_override_font_sizes/normal_font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_3wg3g")
-text = "This game is made by Ivy Zhuang & Danya Cheng
+text = "This game is made by Ivy Zhuang and Danya Cheng
 -------------------------------------------
-					coding - Ivy & Danya
+					coding - Ivy and Danya
 					story/dialogue - Ivy
 						assets - Danya"
 drag_and_drop_selection_enabled = false
