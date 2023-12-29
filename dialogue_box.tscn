@@ -8,6 +8,9 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = 8.0
+offset_right = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vqcml")
@@ -20,10 +23,10 @@ texture = ExtResource("2_u6ewp")
 
 [node name="Speaker" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 149.0
-offset_top = 44.0
-offset_right = 685.0
-offset_bottom = 74.0
+offset_left = 148.0
+offset_top = 50.0
+offset_right = 684.0
+offset_bottom = 80.0
 theme_override_colors/default_color = Color(0.419608, 0.192157, 0.623529, 1)
 theme_override_font_sizes/normal_font_size = 20
 text = "(no name)"
