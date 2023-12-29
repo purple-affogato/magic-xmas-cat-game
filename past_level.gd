@@ -46,7 +46,7 @@ func _process(delta):
 				$Owner.position.x -= 200 * delta
 	elif ph == Phase.BATTLE:
 		print(player_hp," ",kills)
-		if kills >= 3:
+		if kills >= 5:
 			remove_enemies()
 			$Cat.set_process(false)
 			dia.visible = true
