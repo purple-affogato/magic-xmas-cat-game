@@ -50,12 +50,12 @@ func _on_fire_body_entered(body):
 		body.get_parent().player_hp.get_node("ProgressBar").value -= 20
 		body.get_node("OuchTimer").start()
 		var dmg = preload("res://damage.tscn").instantiate()
-		body.add_child(dmg)
 		dmg.get_node("Sprite2D").frame = 1
 		dmg.position = body.get_node("DMGPosition").position
 		dmg.add_to_group("dmg")
 		if body.flip:
 			dmg.scale.x = -dmg.scale.x
+		body.add_child(dmg)
 
 
 func _on_ouch_timer_timeout():
