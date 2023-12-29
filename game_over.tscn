@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b72nongl7dat1"]
+[gd_scene load_steps=12 format=3 uid="uid://b72nongl7dat1"]
 
 [ext_resource type="Script" path="res://game_over.gd" id="1_2pqqu"]
 [ext_resource type="Script" path="res://ParallaxBackground.gd" id="1_sd0rf"]
@@ -7,11 +7,14 @@
 [ext_resource type="Texture2D" uid="uid://bt3fbpgyk8gx6" path="res://Assets/Mountain 1.png" id="4_n5pcc"]
 [ext_resource type="FontFile" uid="uid://dl0bqyvshtwpm" path="res://Assets/Chicago.otf" id="5_f1cdl"]
 [ext_resource type="FontFile" uid="uid://3iebfyny3uoe" path="res://Assets/DK Jambo.otf" id="6_towct"]
+[ext_resource type="Texture2D" uid="uid://crkaj8uoswu5y" path="res://Assets/menu button.png" id="8_n5kjf"]
 
 [sub_resource type="Theme" id="Theme_4sjom"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ph1i6"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Theme" id="Theme_ukrog"]
 
 [node name="GameOver" type="Node2D"]
 script = ExtResource("1_2pqqu")
@@ -64,10 +67,10 @@ text = "GAME OVER"
 drag_and_drop_selection_enabled = false
 
 [node name="Message" type="RichTextLabel" parent="."]
-offset_left = 215.0
-offset_top = 313.0
-offset_right = 956.0
-offset_bottom = 550.0
+offset_left = 216.0
+offset_top = 280.0
+offset_right = 957.0
+offset_bottom = 517.0
 theme_override_fonts/normal_font = ExtResource("6_towct")
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
@@ -75,8 +78,27 @@ text = "[center]Looks like you died!
 Try again and maybe you'll do better next time.[/center]"
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 6.0
+wait_time = 5.0
 one_shot = true
 autostart = true
 
+[node name="back" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(588, 520)
+scale = Vector2(3.64626, 2.74286)
+texture = ExtResource("8_n5kjf")
+
+[node name="back button" type="Button" parent="."]
+offset_left = 356.0
+offset_top = 488.0
+offset_right = 804.0
+offset_bottom = 555.0
+theme = SubResource("Theme_ukrog")
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_color = Color(0.117647, 0.160784, 0.643137, 1)
+theme_override_fonts/font = ExtResource("6_towct")
+theme_override_font_sizes/font_size = 43
+text = "BACK"
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="back button" to="." method="_on_back_button_pressed"]

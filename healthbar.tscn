@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bg8au3fmmdgfk"]
+[gd_scene load_steps=7 format=3 uid="uid://bg8au3fmmdgfk"]
 
 [ext_resource type="FontFile" uid="uid://3iebfyny3uoe" path="res://Assets/DK Jambo.otf" id="1_8i4uj"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4vtnr"]
+[sub_resource type="Theme" id="Theme_ryjrk"]
+default_font = ExtResource("1_8i4uj")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mda48"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="Theme" id="Theme_gpj60"]
@@ -28,15 +31,23 @@ layout_mode = 3
 anchors_preset = 0
 scale = Vector2(1.275, 1.275)
 
-[node name="TextEdit" type="TextEdit" parent="."]
-layout_mode = 0
-offset_left = -240.0
-offset_top = -32.0
-offset_right = -184.0
-offset_bottom = -8.0
-theme_override_fonts/font = ExtResource("1_8i4uj")
-theme_override_styles/normal = SubResource("StyleBoxFlat_4vtnr")
+[node name="Health" type="RichTextLabel" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -238.431
+offset_top = -31.3726
+offset_right = -175.431
+offset_bottom = -6.37256
+grow_horizontal = 2
+theme = SubResource("Theme_ryjrk")
+theme_override_fonts/normal_font = ExtResource("1_8i4uj")
+theme_override_font_sizes/normal_font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_mda48")
 text = "HEALTH"
+drag_and_drop_selection_enabled = false
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 layout_mode = 0

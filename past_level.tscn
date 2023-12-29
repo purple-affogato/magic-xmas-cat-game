@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://rfsh1jqks2ap"]
+[gd_scene load_steps=19 format=3 uid="uid://rfsh1jqks2ap"]
 
 [ext_resource type="Script" path="res://past_level.gd" id="1_ckfk8"]
 [ext_resource type="PackedScene" uid="uid://betpqqnfkgqs5" path="res://cat.tscn" id="1_s4ikg"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dlhppyw3lsjyk" path="res://dialogue_box.tscn" id="5_ntd08"]
 [ext_resource type="PackedScene" uid="uid://dv71jhx51wxd5" path="res://owner.tscn" id="6_xpc7s"]
 [ext_resource type="PackedScene" uid="uid://bg8au3fmmdgfk" path="res://healthbar.tscn" id="7_g77oi"]
+[ext_resource type="Texture2D" uid="uid://crkaj8uoswu5y" path="res://Assets/menu button.png" id="7_qpbed"]
+[ext_resource type="FontFile" uid="uid://3iebfyny3uoe" path="res://Assets/DK Jambo.otf" id="8_aop5r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0tjr"]
 size = Vector2(61, 661)
@@ -31,6 +33,8 @@ size = Vector2(181, 195)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vy3au"]
 size = Vector2(298, 130)
+
+[sub_resource type="Theme" id="Theme_keb5i"]
 
 [node name="PastLevel" type="Node2D"]
 script = ExtResource("1_ckfk8")
@@ -80,6 +84,9 @@ position = Vector2(152, 449)
 shape = SubResource("RectangleShape2D_vy3au")
 
 [node name="DialogueBox" parent="." instance=ExtResource("5_ntd08")]
+offset_left = -76.0
+offset_top = 0.0
+offset_right = -76.0
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(1158, 567)
@@ -90,6 +97,24 @@ position = Vector2(493, 585)
 [node name="Owner" parent="." instance=ExtResource("6_xpc7s")]
 position = Vector2(253, 561)
 
+[node name="quit" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1045, 62)
+scale = Vector2(1.65561, 1.98161)
+texture = ExtResource("7_qpbed")
+
+[node name="quit button" type="Button" parent="."]
+offset_left = 940.0
+offset_top = 42.0
+offset_right = 1142.0
+offset_bottom = 84.0
+theme = SubResource("Theme_keb5i")
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_color = Color(0.117647, 0.160784, 0.643137, 1)
+theme_override_fonts/font = ExtResource("8_aop5r")
+theme_override_font_sizes/font_size = 32
+text = "QUIT"
+
 [node name="HealthBar" parent="." instance=ExtResource("7_g77oi")]
 visible = false
 offset_left = 345.0
@@ -98,3 +123,4 @@ offset_right = 345.0
 offset_bottom = 68.0
 
 [connection signal="owner_offscreen" from="." to="." method="_on_owner_offscreen"]
+[connection signal="pressed" from="quit button" to="." method="_on_quit_button_pressed"]

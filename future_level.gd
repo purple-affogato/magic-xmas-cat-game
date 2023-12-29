@@ -65,3 +65,7 @@ func _ready():
 	player_hp.get_node("ProgressBar").value = 100
 	boss_dead = false
 	$Dog/AnimatedSprite2D.play("walk")
+
+
+func _on_quit_button_pressed():
+	get_tree().change_scene_to_file("menu.tscn")

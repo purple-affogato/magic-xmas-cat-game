@@ -84,3 +84,7 @@ func _on_spawn_timer_timeout():
 		var pos = points[randi() % points.size()].position
 		add_child(enemy, true)
 		enemy.position = pos
+
+
+func _on_quit_button_pressed():
+	get_tree().change_scene_to_file("menu.tscn")

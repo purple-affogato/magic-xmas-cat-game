@@ -94,3 +94,7 @@ func _ready():
 
 func _on_owner_offscreen():
 	dia.set_process(true)
+
+
+func _on_quit_button_pressed():
+	get_tree().change_scene_to_file("menu.tscn")

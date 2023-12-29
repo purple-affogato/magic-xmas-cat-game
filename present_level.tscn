@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cpgg2auee7lft"]
+[gd_scene load_steps=13 format=3 uid="uid://cpgg2auee7lft"]
 
 [ext_resource type="Script" path="res://present_level.gd" id="1_8bpqe"]
 [ext_resource type="Texture2D" uid="uid://dnl5x6pq4mqta" path="res://Assets/present bg w sky idk.png" id="1_64jft"]
 [ext_resource type="PackedScene" uid="uid://dlhppyw3lsjyk" path="res://dialogue_box.tscn" id="2_ko05i"]
 [ext_resource type="PackedScene" uid="uid://betpqqnfkgqs5" path="res://cat.tscn" id="3_y3kcs"]
+[ext_resource type="Texture2D" uid="uid://crkaj8uoswu5y" path="res://Assets/menu button.png" id="4_tccgx"]
+[ext_resource type="FontFile" uid="uid://3iebfyny3uoe" path="res://Assets/DK Jambo.otf" id="5_e5bn0"]
 [ext_resource type="PackedScene" uid="uid://bg8au3fmmdgfk" path="res://healthbar.tscn" id="5_tljhl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eoh1v"]
@@ -17,6 +19,8 @@ size = Vector2(72, 735)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_42r0g"]
 size = Vector2(1165.5, 47)
+
+[sub_resource type="Theme" id="Theme_nay8i"]
 
 [node name="PresentLevel" type="Node2D"]
 script = ExtResource("1_8bpqe")
@@ -45,6 +49,28 @@ position = Vector2(584.25, 669)
 shape = SubResource("RectangleShape2D_42r0g")
 
 [node name="DialogueBox" parent="." instance=ExtResource("2_ko05i")]
+offset_left = -74.0
+offset_top = 4.0
+offset_right = -74.0
+offset_bottom = 4.0
+
+[node name="quit" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1041.69, 66.3563)
+scale = Vector2(1.65561, 1.98161)
+texture = ExtResource("4_tccgx")
+
+[node name="quit button" type="Button" parent="."]
+offset_left = 936.688
+offset_top = 46.3563
+offset_right = 1138.69
+offset_bottom = 88.3563
+theme = SubResource("Theme_nay8i")
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_color = Color(0.117647, 0.160784, 0.643137, 1)
+theme_override_fonts/font = ExtResource("5_e5bn0")
+theme_override_font_sizes/font_size = 32
+text = "QUIT"
 
 [node name="Cat" parent="." instance=ExtResource("3_y3kcs")]
 position = Vector2(582, 499)
@@ -71,4 +97,5 @@ offset_bottom = 59.0
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 3.0
 
+[connection signal="pressed" from="quit button" to="." method="_on_quit_button_pressed"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
