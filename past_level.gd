@@ -45,7 +45,7 @@ func _process(delta):
 					return
 				$Owner.position.x -= 200 * delta
 	elif ph == Phase.BATTLE:
-		print(player_hp," ",kills)
+		print(kills)
 		if kills >= 5:
 			remove_enemies()
 			$Cat.set_process(false)
@@ -63,7 +63,7 @@ func _process(delta):
 func spawn_enemies():
 	var bird = preload("res://bird.tscn").instantiate()
 	if len(get_tree().get_nodes_in_group("waterbird")) < 2:
-		add_child(bird)
+		add_child(bird, true)
 		bird.position = $SpawnPoint.position
 		bird.add_to_group("waterbird")
 		
