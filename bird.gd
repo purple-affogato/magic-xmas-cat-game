@@ -47,6 +47,7 @@ func handle_atk_animation():
 			dmg.add_to_group("dmg")
 			if cat.flip:
 				dmg.scale.x = -dmg.scale.x
+		$AnimatedSprite2D.play("fly_idle")
 		
 
 func _ready():
