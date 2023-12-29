@@ -38,7 +38,7 @@ func handle_atk_animation():
 		atk = true
 
 func _ready():
-	hp = 1
+	hp = 2
 	atk = true
 
 func _on_death_timer_timeout():

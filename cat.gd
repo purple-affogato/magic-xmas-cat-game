@@ -138,10 +138,10 @@ func _on_ouch_timer_timeout():
 func _on_whip_body_entered(body):
 	#print(body.get_name())
 	if body.name.contains("Fox") or body.name.contains("Bird"):
-		body.hp -= 1
+		body.hp -= 2
 		var dmg = preload("res://damage.tscn").instantiate()
 		body.add_child(dmg)
-		dmg.get_node("Sprite2D").frame = 1
+		dmg.get_node("Sprite2D").frame = 2
 		dmg.position = body.get_node("DMGPosition").position
 		dmg.add_to_group("dmg")
 		body.get_node("OuchTimer").start()
@@ -150,10 +150,10 @@ func _on_whip_body_entered(body):
 func _on_water_body_entered(body):
 	#print(body.name)
 	if body.name.contains("Fox") or body.name.contains("Bird"):
-		body.hp -= 1
+		body.hp -= 3
 		var dmg = preload("res://damage.tscn").instantiate()
 		body.add_child(dmg)
-		dmg.get_node("Sprite2D").frame = 1
+		dmg.get_node("Sprite2D").frame = 3
 		dmg.position = body.get_node("DMGPosition").position
 		dmg.add_to_group("dmg")
 		body.get_node("OuchTimer").start()
