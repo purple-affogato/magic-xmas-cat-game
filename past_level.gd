@@ -36,6 +36,7 @@ func _process(delta):
 			dia.visible = false
 			ph = Phase.BATTLE
 			$Cat.set_process(true)
+			player_hp.visible = true
 		else:
 			if dia.label.text == "*Owner walks away*":
 				dia.set_process(false)
@@ -51,6 +52,7 @@ func _process(delta):
 			dia.visible = true
 			dia.start_reading(end_dia)
 			ph = Phase.END
+			player_hp.visible = false
 			return
 		spawn_enemies()
 		handle_birds()
@@ -81,7 +83,8 @@ func _ready():
 	dia = $DialogueBox
 	dia.start_reading(start_dia)
 	$Cat.set_process(false)
-	player_hp = 100
+	player_hp = $HealthBar
+	player_hp.get_node("ProgressBar").value = 100
 	kills = 0
 
 
