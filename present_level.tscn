@@ -47,13 +47,19 @@ shape = SubResource("RectangleShape2D_42r0g")
 [node name="DialogueBox" parent="." instance=ExtResource("2_ko05i")]
 
 [node name="Cat" parent="." instance=ExtResource("3_y3kcs")]
-position = Vector2(198, 496)
+position = Vector2(582, 499)
 
 [node name="SpawnPoint1" type="Marker2D" parent="." groups=["spawn"]]
 position = Vector2(1159, 570)
 
 [node name="SpawnPoint2" type="Marker2D" parent="." groups=["spawn"]]
 position = Vector2(1156, 454)
+
+[node name="SpawnPoint3" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(-3, 573)
+
+[node name="SpawnPoint4" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(1, 469)
 
 [node name="HealthBar" parent="." instance=ExtResource("5_tljhl")]
 visible = false
