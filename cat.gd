@@ -129,6 +129,8 @@ func _on_scratch_body_entered(body):
 		dmg.position = body.get_node("DMGPosition").position
 		dmg.add_to_group("dmg")
 		body.get_node("OuchTimer").start()
+		if body.flip:
+			dmg.scale.x = -dmg.scale.x
 
 func _on_ouch_timer_timeout():
 	for i in get_tree().get_nodes_in_group("dmg"):
@@ -145,6 +147,8 @@ func _on_whip_body_entered(body):
 		dmg.position = body.get_node("DMGPosition").position
 		dmg.add_to_group("dmg")
 		body.get_node("OuchTimer").start()
+		if body.flip:
+			dmg.scale.x = -dmg.scale.x
 
 
 func _on_water_body_entered(body):
@@ -157,3 +161,5 @@ func _on_water_body_entered(body):
 		dmg.position = body.get_node("DMGPosition").position
 		dmg.add_to_group("dmg")
 		body.get_node("OuchTimer").start()
+		if body.flip:
+			dmg.scale.x = -dmg.scale.x
