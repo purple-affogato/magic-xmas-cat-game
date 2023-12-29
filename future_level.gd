@@ -35,6 +35,7 @@ func _process(delta):
 				if $Dog.position.x > 700:
 					dia.set_process(true)
 					$Dog/AnimatedSprite2D.play("idle")
+					$blockades/left.disabled = false
 				else:
 					dia.set_process(false)
 					$Dog.position.x += 200 * delta

@@ -50,7 +50,6 @@ func _on_attack_timer_timeout():
 	$AnimatedSprite2D.play("water")
 	$Water/AOE.disabled = false
 
-
 func _on_water_body_entered(body):
 	if body.get_name() == 'Cat':
 		body.get_parent().player_hp.get_node("ProgressBar").value -= 20

@@ -24,14 +24,14 @@ func _process(delta):
 		if abs(playerX - self.position.x) >= 170:
 			if self.position.x > playerX: # go left
 				velocity.x = -SPEED
-				if flip:
-					scale.x = -scale.x
-					flip = false
-			else:
 				if !flip:
 					scale.x = -scale.x
 					flip = true
-			velocity.x = SPEED
+			else:
+				if flip:
+					scale.x = -scale.x
+					flip = false
+				velocity.x = SPEED
 		if abs(playerY - self.position.y) >= 100:
 			if self.position.y > playerY: # go up
 				velocity.y = -SPEED
@@ -47,7 +47,7 @@ func handle_atk_animation():
 		atk = true
 
 func _ready():
-	hp = 12
+	hp = 20
 	atk = true
 
 func _on_attack_body_entered(body):
@@ -66,7 +66,6 @@ func _on_attack_body_entered(body):
 func _on_attack_timer_timeout():
 	$AnimatedSprite2D.play("attack")
 	$Attack/AOE.disabled = false
-
 
 func _on_death_timer_timeout():
 	queue_free()
