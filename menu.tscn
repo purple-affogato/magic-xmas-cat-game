@@ -33,6 +33,7 @@ motion_scale = Vector2(0, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky"]
 texture_filter = 1
+scale = Vector2(0.747082, 1)
 texture = ExtResource("3_aw4wo")
 centered = false
 
@@ -73,18 +74,37 @@ theme_override_fonts/font = ExtResource("7_8xuo7")
 theme_override_font_sizes/font_size = 43
 text = "PLAY"
 
-[node name="quit button" type="Sprite2D" parent="."]
+[node name="credits" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(596, 352)
+scale = Vector2(3.64626, 2.74286)
+texture = ExtResource("6_xyr1q")
+
+[node name="credits button" type="Button" parent="."]
+layout_mode = 2
+offset_left = 360.0
+offset_top = 320.0
+offset_right = 808.0
+offset_bottom = 387.0
+theme = SubResource("Theme_ho5as")
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_color = Color(0.117647, 0.160784, 0.643137, 1)
+theme_override_fonts/font = ExtResource("7_8xuo7")
+theme_override_font_sizes/font_size = 43
+text = "CREDITS"
+
+[node name="quit button" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(596, 448)
 scale = Vector2(3.64626, 2.74286)
 texture = ExtResource("6_xyr1q")
 
 [node name="quit" type="Button" parent="."]
 layout_mode = 2
 offset_left = 360.0
-offset_top = 320.0
+offset_top = 416.0
 offset_right = 808.0
-offset_bottom = 387.0
+offset_bottom = 483.0
 theme = SubResource("Theme_ho5as")
 theme_type_variation = &"FlatButton"
 theme_override_colors/font_color = Color(0.117647, 0.160784, 0.643137, 1)
@@ -98,16 +118,17 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -224.0
+offset_left = -328.0
 offset_top = 88.0
-offset_right = 224.0
+offset_right = 320.0
 offset_bottom = 176.0
 grow_horizontal = 2
 theme = SubResource("Theme_ex1bn")
 theme_override_fonts/font = ExtResource("8_xuaeo")
 theme_override_font_sizes/font_size = 70
 theme_override_styles/normal = SubResource("StyleBoxFlat_n55ai")
-text = "Omg Cat game!!!"
+text = "CATMAS CHRONICLES"
 
 [connection signal="pressed" from="play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="credits button" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
