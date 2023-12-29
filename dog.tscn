@@ -1,5 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://cxi5g17apu0m5"]
+[gd_scene load_steps=15 format=3 uid="uid://bq2ne2yrd7j65"]
 
+[ext_resource type="Script" path="res://dog.gd" id="1_8khmc"]
 [ext_resource type="Texture2D" uid="uid://dw4n51sqrebrr" path="res://Assets/dog(boss).png" id="1_p3va1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ducf7"]
@@ -41,7 +42,7 @@ region = Rect2(225, 100, 75, 100)
 [sub_resource type="SpriteFrames" id="SpriteFrames_x1k1r"]
 animations = [{
 "frames": [{
-"duration": 5.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ducf7")
 }, {
 "duration": 1.0,
@@ -50,7 +51,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8dmy1")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 5.0
 }, {
@@ -84,9 +85,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bwfua"]
-size = Vector2(138.5, 110.5)
+size = Vector2(149, 145)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_81egc"]
+size = Vector2(70, 109)
+
+[node name="Dog" type="CharacterBody2D"]
+script = ExtResource("1_8khmc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -94,8 +99,33 @@ position = Vector2(8, -40)
 scale = Vector2(2.59667, 2.59667)
 sprite_frames = SubResource("SpriteFrames_x1k1r")
 animation = &"attack"
-frame_progress = 0.972946
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-5.25, -7.25)
+position = Vector2(-2.5, -6.5)
 shape = SubResource("RectangleShape2D_bwfua")
+
+[node name="Attack" type="Area2D" parent="."]
+
+[node name="AOE" type="CollisionShape2D" parent="Attack"]
+position = Vector2(110, -8.5)
+shape = SubResource("RectangleShape2D_81egc")
+disabled = true
+debug_color = Color(0.870588, 0.219608, 0.686275, 0.419608)
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="DMGPosition" type="Marker2D" parent="."]
+position = Vector2(1, -116)
+
+[node name="OuchTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="Attack" to="." method="_on_attack_body_entered"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
+[connection signal="timeout" from="OuchTimer" to="." method="_on_ouch_timer_timeout"]
