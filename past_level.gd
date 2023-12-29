@@ -28,6 +28,7 @@ var ph
 var dia
 var player_hp
 var kills
+signal owner_offscreen
 
 func _process(delta):
 	if ph == Phase.START:
@@ -35,6 +36,13 @@ func _process(delta):
 			dia.visible = false
 			ph = Phase.BATTLE
 			$Cat.set_process(true)
+		else:
+			if dia.label.text == "*Owner walks away*":
+				dia.set_process(false)
+				if $Owner.position.x < -200:
+					owner_offscreen.emit()
+					return
+				$Owner.position.x -= 200 * delta
 	elif ph == Phase.BATTLE:
 		print(player_hp," ",kills)
 		if kills >= 3:
@@ -75,3 +83,7 @@ func _ready():
 	$Cat.set_process(false)
 	player_hp = 100
 	kills = 0
+
+
+func _on_owner_offscreen():
+	dia.set_process(true)
