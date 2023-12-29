@@ -22,7 +22,7 @@ func _process(delta):
 		if flip:
 			scale.x = -scale.x
 			flip = false
-	if abs(playerX - self.position.x) <= 170 and abs(playerY - self.position.y) <= 140:
+	if abs(playerX - self.position.x) <= 200 and abs(playerY - self.position.y) <= 100:
 		velocity.x = 0
 		velocity.y = 0
 		if atk:
@@ -30,12 +30,12 @@ func _process(delta):
 			atk = false
 	else:
 		$AnimatedSprite2D.play("walk")
-		if abs(playerX - self.position.x) >= 170:
+		if abs(playerX - self.position.x) >= 200:
 			if self.position.x > playerX: # go left
 				velocity.x = -SPEED
 			else:
 				velocity.x = SPEED
-		if abs(playerY - self.position.y) >= 140:
+		if abs(playerY - self.position.y) >= 100:
 			if self.position.y > playerY: # go up
 				velocity.y = -SPEED
 			else:
@@ -44,11 +44,12 @@ func _process(delta):
 	move_and_slide()
 
 func handle_atk_animation():
+	print($AnimatedSprite2D.animation)
 	if $AnimatedSprite2D.animation == "attack" and $AnimatedSprite2D.frame_progress == 1.0:
 		$AnimatedSprite2D.play("idle")
-		$Attack/AOE.disabled = true
 		atk = true
 		var cat = get_parent().get_node("Cat")
+		print(cat)
 		if $Attack.overlaps_body(cat):
 			cat.get_parent().player_hp.get_node("ProgressBar").value -= 20
 			cat.get_node("OuchTimer").start()
@@ -59,6 +60,7 @@ func handle_atk_animation():
 			dmg.add_to_group("dmg")
 			if cat.flip:
 				dmg.scale.x = -dmg.scale.x
+		$Attack/AOE.disabled = true
 
 func _ready():
 	hp = 20

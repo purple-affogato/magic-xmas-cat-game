@@ -38,7 +38,6 @@ func _ready():
 func handle_atk_animation():
 	if $AnimatedSprite2D.animation == "fire" and $AnimatedSprite2D.frame_progress == 1.0:
 		$AnimatedSprite2D.play("idle")
-		$Fire/AOE.disabled = true
 		atk = true
 		var cat = get_parent().get_node("Cat")
 		if $Fire.overlaps_body(cat):
@@ -51,6 +50,7 @@ func handle_atk_animation():
 			dmg.add_to_group("dmg")
 			if cat.flip:
 				dmg.scale.x = -dmg.scale.x
+		$Fire/AOE.disabled = true
 
 func _on_attack_timer_timeout():
 	$AnimatedSprite2D.play("fire")
