@@ -23,7 +23,6 @@ var ph
 var dia
 var player_hp
 var kills
-signal ghost_offscreen
 
 func _ready():
 	ph = Phase.START
@@ -43,18 +42,11 @@ func _process(delta):
 			$Cat.set_process(true)
 			player_hp.visible = true
 			$SpawnTimer.start()
-		else:
-			if dia.label.text == "*Owner walks away*":
-				dia.set_process(false)
-				if $ghost.position.x < -200:
-					ghost_offscreen.emit()
-					return
-				$Owner.position.x -= 200 * delta
 	elif ph == Phase.BATTLE:
 		if kills >= 8:
 			remove_enemies()
+			$Cat/AnimatedSprite2D.play('Idle')
 			$Cat.set_process(false)
-			$Cat/AnimatedSprite2D.play("idle")
 			dia.visible = true
 			dia.start_reading(end_dia)
 			ph = Phase.END
@@ -65,6 +57,9 @@ func _process(delta):
 	else:
 		if !dia.reading:
 			get_tree().change_scene_to_file("res://future_level.tscn")
+		else:
+			if dia.label.text == "*Cue vision*":
+				$Ghost.visible = true
 	
 		
 		
