@@ -27,7 +27,8 @@ var kills
 func _ready():
 	ph = Phase.START
 	dia = $DialogueBox
-	player_hp = 100 # placeholder value
+	player_hp = $HealthBar
+	player_hp.get_node("ProgressBar").value = 100
 	kills = 0
 	$Cat/AnimatedSprite2D.play('Idle')
 	dia.start_reading(start_dia)
@@ -39,33 +40,46 @@ func _process(delta):
 			dia.visible = false
 			ph = Phase.BATTLE
 			$Cat.set_process(true)
+			player_hp.visible = true
+			$SpawnTimer.start()
 	elif ph == Phase.BATTLE:
-		if kills >= 7:
+		if kills >= 9:
 			remove_enemies()
 			$Cat.set_process(false)
 			dia.visible = true
 			dia.start_reading(end_dia)
 			ph = Phase.END
+			player_hp.visible = false
+			$SpawnTimer.queue_free()
 			return
-		spawn_enemies()
-		handle_foxes()
+		handle_enemies()
+	else:
+		if !dia.reading:
+			get_tree().change_scene_to_file("res://future_level.tscn")
 	
-			
-func spawn_enemies():
-	if len(get_tree().get_nodes_in_group("firefox")) < 2:
-		var points = get_tree().get_nodes_in_group("spawn")
-		var pos = points[randi() % points.size()].position
-		var fox = preload("res://fox.tscn").instantiate()
-		add_child(fox, true)
-		fox.position = pos
-		fox.add_to_group("firefox")
 		
-func handle_foxes():
-	var foxes = get_tree().get_nodes_in_group("firefox")
-	for f in foxes:
-		f.playerX = $Cat.position.x
+		
+func handle_enemies():
+	var enemies = get_tree().get_nodes_in_group("enemy")
+	for e in enemies:
+		e.playerX = $Cat.position.x
 
 func remove_enemies():
-	var foxes = get_tree().get_nodes_in_group("firefox")
-	for f in foxes:
-		f.queue_free()
+	var enemies = get_tree().get_nodes_in_group("enemy")
+	for e in enemies:
+		e.queue_free()
+
+
+func _on_spawn_timer_timeout():
+	var choose_enemy = randi() % 2
+	var enemy
+	if choose_enemy == 0:
+		enemy = preload("res://fox.tscn").instantiate()
+	else:
+		enemy = preload("res://bird.tscn").instantiate()
+	enemy.add_to_group("enemy")
+	if len(get_tree().get_nodes_in_group("enemy")) < 3:
+		var points = get_tree().get_nodes_in_group("spawn")
+		var pos = points[randi() % points.size()].position
+		add_child(enemy, true)
+		enemy.position = pos
