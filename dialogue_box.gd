@@ -31,6 +31,8 @@ func handle_sfx():
 	var t = $Dialogue.text
 	if t == "*Boom*":
 		$Radio.stream = load("res://Assets/vine_boom.wav")
+	elif t == "*Screaming*":
+		$Radio.stream = load("res://Assets/screaming_girl.ogg")
 	else:
 		return
 	$Radio.play()
