@@ -23,6 +23,7 @@ var ph
 var dia
 var player_hp
 var kills
+signal ghost_offscreen
 
 func _ready():
 	ph = Phase.START
@@ -42,6 +43,13 @@ func _process(delta):
 			$Cat.set_process(true)
 			player_hp.visible = true
 			$SpawnTimer.start()
+		else:
+			if dia.label.text == "*Owner walks away*":
+				dia.set_process(false)
+				if $ghost.position.x < -200:
+					ghost_offscreen.emit()
+					return
+				$Owner.position.x -= 200 * delta
 	elif ph == Phase.BATTLE:
 		if kills >= 8:
 			remove_enemies()

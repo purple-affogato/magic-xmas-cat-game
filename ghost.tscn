@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bf3245w1acbui"]
+
+[ext_resource type="Texture2D" uid="uid://pn4i4r68dr7r" path="res://Assets/ghost cat.png" id="1_jin1b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6kal3"]
+atlas = ExtResource("1_jin1b")
+region = Rect2(0, 0, 103, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6m0j7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6kal3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_616gw"]
+size = Vector2(61.5, 126)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-3, 33)
+scale = Vector2(2.555, 2.555)
+sprite_frames = SubResource("SpriteFrames_6m0j7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.75, 10)
+shape = SubResource("RectangleShape2D_616gw")
