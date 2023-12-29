@@ -1,26 +1,26 @@
-[gd_scene load_steps=12 format=3 uid="uid://b72nongl7dat1"]
+[gd_scene load_steps=12 format=3 uid="uid://bh208u5grfq6e"]
 
-[ext_resource type="Script" path="res://game_over.gd" id="1_2pqqu"]
-[ext_resource type="Script" path="res://ParallaxBackground.gd" id="1_sd0rf"]
-[ext_resource type="Texture2D" uid="uid://bic6cg2my1cu1" path="res://Assets/Background.png" id="2_qbyma"]
-[ext_resource type="Texture2D" uid="uid://w8l5nejfp5dd" path="res://Assets/Mountain 2.png" id="3_vk1rr"]
-[ext_resource type="Texture2D" uid="uid://bt3fbpgyk8gx6" path="res://Assets/Mountain 1.png" id="4_n5pcc"]
-[ext_resource type="FontFile" uid="uid://dl0bqyvshtwpm" path="res://Assets/Chicago.otf" id="5_f1cdl"]
-[ext_resource type="FontFile" uid="uid://3iebfyny3uoe" path="res://Assets/DK Jambo.otf" id="6_towct"]
-[ext_resource type="Texture2D" uid="uid://c6iw1el647i65" path="res://Assets/menu button.png" id="8_n5kjf"]
+[ext_resource type="Script" path="res://win_game.gd" id="1_tfxk2"]
+[ext_resource type="Script" path="res://ParallaxBackground.gd" id="1_xjj0a"]
+[ext_resource type="Texture2D" uid="uid://bic6cg2my1cu1" path="res://Assets/Background.png" id="2_hkdw3"]
+[ext_resource type="Texture2D" uid="uid://w8l5nejfp5dd" path="res://Assets/Mountain 2.png" id="3_rm6id"]
+[ext_resource type="Texture2D" uid="uid://bt3fbpgyk8gx6" path="res://Assets/Mountain 1.png" id="4_r74tn"]
+[ext_resource type="FontFile" uid="uid://dl0bqyvshtwpm" path="res://Assets/Chicago.otf" id="5_yd0sv"]
+[ext_resource type="FontFile" uid="uid://3iebfyny3uoe" path="res://Assets/DK Jambo.otf" id="6_cxikp"]
+[ext_resource type="Texture2D" uid="uid://c6iw1el647i65" path="res://Assets/menu button.png" id="7_f3oo1"]
 
-[sub_resource type="Theme" id="Theme_4sjom"]
+[sub_resource type="Theme" id="Theme_pmyfa"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ph1i6"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f7ja2"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="Theme" id="Theme_ukrog"]
+[sub_resource type="Theme" id="Theme_jkle2"]
 
-[node name="GameOver" type="Node2D"]
-script = ExtResource("1_2pqqu")
+[node name="WinGame" type="Node2D"]
+script = ExtResource("1_tfxk2")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-script = ExtResource("1_sd0rf")
+script = ExtResource("1_xjj0a")
 
 [node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0, 0)
@@ -28,7 +28,7 @@ motion_scale = Vector2(0, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky"]
 texture_filter = 1
 scale = Vector2(0.747082, 1)
-texture = ExtResource("2_qbyma")
+texture = ExtResource("2_hkdw3")
 centered = false
 
 [node name="Mountain 2" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -37,7 +37,7 @@ motion_mirroring = Vector2(1542, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Mountain 2"]
 position = Vector2(2, 1)
-texture = ExtResource("3_vk1rr")
+texture = ExtResource("3_rm6id")
 centered = false
 
 [node name="Mountain 1" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -46,7 +46,7 @@ motion_mirroring = Vector2(1542, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Mountain 1"]
 position = Vector2(2, 1)
-texture = ExtResource("4_n5pcc")
+texture = ExtResource("4_r74tn")
 centered = false
 
 [node name="Title" type="RichTextLabel" parent="."]
@@ -59,11 +59,11 @@ offset_top = 143.0
 offset_right = 760.0
 offset_bottom = 231.0
 grow_horizontal = 2
-theme = SubResource("Theme_4sjom")
-theme_override_fonts/normal_font = ExtResource("5_f1cdl")
+theme = SubResource("Theme_pmyfa")
+theme_override_fonts/normal_font = ExtResource("5_yd0sv")
 theme_override_font_sizes/normal_font_size = 70
-theme_override_styles/normal = SubResource("StyleBoxFlat_ph1i6")
-text = "GAME OVER"
+theme_override_styles/normal = SubResource("StyleBoxFlat_f7ja2")
+text = "CONGRATS!"
 drag_and_drop_selection_enabled = false
 
 [node name="Message" type="RichTextLabel" parent="."]
@@ -71,11 +71,10 @@ offset_left = 216.0
 offset_top = 280.0
 offset_right = 957.0
 offset_bottom = 517.0
-theme_override_fonts/normal_font = ExtResource("6_towct")
+theme_override_fonts/normal_font = ExtResource("6_cxikp")
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
-text = "[center]Looks like you died!
-Try again and maybe you'll do better next time.[/center]"
+text = "[center]You've completed the game! Thanks for playing![/center]"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
@@ -86,17 +85,17 @@ autostart = true
 texture_filter = 1
 position = Vector2(588, 520)
 scale = Vector2(3.64626, 2.74286)
-texture = ExtResource("8_n5kjf")
+texture = ExtResource("7_f3oo1")
 
 [node name="back button" type="Button" parent="."]
 offset_left = 356.0
 offset_top = 488.0
 offset_right = 804.0
 offset_bottom = 555.0
-theme = SubResource("Theme_ukrog")
+theme = SubResource("Theme_jkle2")
 theme_type_variation = &"FlatButton"
 theme_override_colors/font_color = Color(0.117647, 0.160784, 0.643137, 1)
-theme_override_fonts/font = ExtResource("6_towct")
+theme_override_fonts/font = ExtResource("6_cxikp")
 theme_override_font_sizes/font_size = 43
 text = "BACK"
 

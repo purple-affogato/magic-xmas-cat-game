@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dlhppyw3lsjyk" path="res://dialogue_box.tscn" id="5_ntd08"]
 [ext_resource type="PackedScene" uid="uid://dv71jhx51wxd5" path="res://owner.tscn" id="6_xpc7s"]
 [ext_resource type="PackedScene" uid="uid://bg8au3fmmdgfk" path="res://healthbar.tscn" id="7_g77oi"]
-[ext_resource type="Texture2D" uid="uid://crkaj8uoswu5y" path="res://Assets/menu button.png" id="7_qpbed"]
+[ext_resource type="Texture2D" uid="uid://c6iw1el647i65" path="res://Assets/menu button.png" id="7_qpbed"]
 [ext_resource type="FontFile" uid="uid://3iebfyny3uoe" path="res://Assets/DK Jambo.otf" id="8_aop5r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0tjr"]

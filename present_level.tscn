@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dnl5x6pq4mqta" path="res://Assets/present bg w sky idk.png" id="1_64jft"]
 [ext_resource type="PackedScene" uid="uid://dlhppyw3lsjyk" path="res://dialogue_box.tscn" id="2_ko05i"]
 [ext_resource type="PackedScene" uid="uid://betpqqnfkgqs5" path="res://cat.tscn" id="3_y3kcs"]
-[ext_resource type="Texture2D" uid="uid://crkaj8uoswu5y" path="res://Assets/menu button.png" id="4_tccgx"]
+[ext_resource type="Texture2D" uid="uid://c6iw1el647i65" path="res://Assets/menu button.png" id="4_tccgx"]
 [ext_resource type="FontFile" uid="uid://3iebfyny3uoe" path="res://Assets/DK Jambo.otf" id="5_e5bn0"]
 [ext_resource type="PackedScene" uid="uid://bg8au3fmmdgfk" path="res://healthbar.tscn" id="5_tljhl"]
 
