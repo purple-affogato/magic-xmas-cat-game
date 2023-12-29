@@ -1,14 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://6kmnseidoq4t"]
+[gd_scene load_steps=14 format=3 uid="uid://6kmnseidoq4t"]
 
 [ext_resource type="Script" path="res://ParallaxBackground.gd" id="1_hpnfs"]
+[ext_resource type="Script" path="res://credits.gd" id="1_ocetl"]
 [ext_resource type="Texture2D" uid="uid://bic6cg2my1cu1" path="res://Assets/Background.png" id="2_cybxe"]
 [ext_resource type="Texture2D" uid="uid://w8l5nejfp5dd" path="res://Assets/Mountain 2.png" id="3_7xskh"]
 [ext_resource type="Texture2D" uid="uid://bt3fbpgyk8gx6" path="res://Assets/Mountain 1.png" id="4_0kkla"]
 [ext_resource type="FontFile" uid="uid://3iebfyny3uoe" path="res://Assets/DK Jambo.otf" id="5_2v50e"]
 [ext_resource type="Texture2D" uid="uid://crkaj8uoswu5y" path="res://Assets/menu button.png" id="5_awnod"]
 [ext_resource type="FontFile" uid="uid://dl0bqyvshtwpm" path="res://Assets/Chicago.otf" id="6_rvceo"]
-
-[sub_resource type="Theme" id="Theme_buau1"]
 
 [sub_resource type="Theme" id="Theme_6t4xg"]
 
@@ -21,7 +20,10 @@ default_font = ExtResource("5_2v50e")
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3wg3g"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
+[sub_resource type="Theme" id="Theme_buau1"]
+
 [node name="Credits" type="Node"]
+script = ExtResource("1_ocetl")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource("1_hpnfs")
@@ -52,24 +54,6 @@ motion_mirroring = Vector2(1542, 0)
 position = Vector2(2, 1)
 texture = ExtResource("4_0kkla")
 centered = false
-
-[node name="back" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(588, 472)
-scale = Vector2(3.64626, 2.74286)
-texture = ExtResource("5_awnod")
-
-[node name="back button" type="Button" parent="."]
-offset_left = 356.0
-offset_top = 440.0
-offset_right = 804.0
-offset_bottom = 507.0
-theme = SubResource("Theme_buau1")
-theme_type_variation = &"FlatButton"
-theme_override_colors/font_color = Color(0.117647, 0.160784, 0.643137, 1)
-theme_override_fonts/font = ExtResource("5_2v50e")
-theme_override_font_sizes/font_size = 43
-text = "BACK"
 
 [node name="Credits" type="RichTextLabel" parent="."]
 texture_filter = 1
@@ -109,4 +93,22 @@ text = "This game is made by Ivy Zhuang & Danya Cheng
 						assets - Danya"
 drag_and_drop_selection_enabled = false
 
-[connection signal="pressed" from="back button" to="ParallaxBackground" method="_on_back_button_pressed"]
+[node name="back" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(588, 472)
+scale = Vector2(3.64626, 2.74286)
+texture = ExtResource("5_awnod")
+
+[node name="back button" type="Button" parent="."]
+offset_left = 356.0
+offset_top = 440.0
+offset_right = 804.0
+offset_bottom = 507.0
+theme = SubResource("Theme_buau1")
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_color = Color(0.117647, 0.160784, 0.643137, 1)
+theme_override_fonts/font = ExtResource("5_2v50e")
+theme_override_font_sizes/font_size = 43
+text = "BACK"
+
+[connection signal="pressed" from="back button" to="." method="_on_back_button_pressed"]
