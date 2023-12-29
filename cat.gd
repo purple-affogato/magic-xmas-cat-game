@@ -136,8 +136,6 @@ func add_dmg_number(num, body):
 		body.get_node("OuchTimer").start()
 		if body.flip:
 			dmg.scale.x = -dmg.scale.x
-		if len(body.get_nodes_in_group("dmg")) > 0:
-			body.get_nodes_in_group("dmg").clear()
 		body.add_child(dmg)
 
 func _on_scratch_body_entered(body):
