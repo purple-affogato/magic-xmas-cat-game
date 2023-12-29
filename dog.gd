@@ -35,7 +35,7 @@ func _process(delta):
 				velocity.x = -SPEED
 			else:
 				velocity.x = SPEED
-		if abs(playerY - self.position.y) >= 140:
+		if abs(playerY - self.position.y) >= 100:
 			if self.position.y > playerY: # go up
 				velocity.y = -SPEED
 			else:
@@ -63,19 +63,6 @@ func handle_atk_animation():
 func _ready():
 	hp = 20
 	atk = true
-
-func _on_attack_body_entered(body):
-	if body.get_name() == 'Cat':
-		body.get_parent().player_hp.get_node("ProgressBar").value -= 20
-		body.get_node("OuchTimer").start()
-		var dmg = preload("res://damage.tscn").instantiate()
-		dmg.get_node("Sprite2D").frame = 1
-		dmg.position = body.get_node("DMGPosition").position
-		dmg.add_to_group("dmg")
-		if body.flip:
-			dmg.scale.x = -dmg.scale.x
-		body.add_child(dmg)
-
 
 func _on_attack_timer_timeout():
 	$AnimatedSprite2D.play("attack")
