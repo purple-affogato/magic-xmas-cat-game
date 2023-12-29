@@ -59,6 +59,7 @@ func _process(delta):
 			dia.start_reading(end_dia)
 			ph = Phase.END
 			player_hp.visible = false
+			$BGM.stop()
 			return
 		spawn_enemies()
 		handle_birds()
