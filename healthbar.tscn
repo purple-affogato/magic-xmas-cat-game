@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dqxgnyk8eyqvy"]
+[gd_scene load_steps=6 format=3 uid="uid://bg8au3fmmdgfk"]
 
 [ext_resource type="FontFile" uid="uid://3iebfyny3uoe" path="res://Assets/DK Jambo.otf" id="1_8i4uj"]
 
@@ -23,7 +23,10 @@ border_width_right = 5
 border_width_bottom = 3
 border_color = Color(0.8, 0.8, 0.8, 0)
 
-[node name="Node" type="Node"]
+[node name="HealthBar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(1.275, 1.275)
 
 [node name="TextEdit" type="TextEdit" parent="."]
 offset_left = -240.0
