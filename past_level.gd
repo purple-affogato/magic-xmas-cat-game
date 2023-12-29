@@ -45,6 +45,9 @@ func _process(delta):
 					return
 				$Owner.position.x -= 200 * delta
 	elif ph == Phase.BATTLE:
+		if player_hp.get_node("ProgressBar").value <= 0:
+			get_tree().change_scene_to_file("res://game_over.tscn")
+			return
 		print(kills)
 		if kills >= 5:
 			remove_enemies()
