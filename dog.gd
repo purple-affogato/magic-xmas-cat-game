@@ -22,7 +22,7 @@ func _process(delta):
 		if flip:
 			scale.x = -scale.x
 			flip = false
-	if abs(playerX - self.position.x) <= 170 and abs(playerY - self.position.y) <= 100:
+	if abs(playerX - self.position.x) <= 170 and abs(playerY - self.position.y) <= 140:
 		velocity.x = 0
 		velocity.y = 0
 		if atk:
@@ -35,7 +35,7 @@ func _process(delta):
 				velocity.x = -SPEED
 			else:
 				velocity.x = SPEED
-		if abs(playerY - self.position.y) >= 100:
+		if abs(playerY - self.position.y) >= 140:
 			if self.position.y > playerY: # go up
 				velocity.y = -SPEED
 			else:
