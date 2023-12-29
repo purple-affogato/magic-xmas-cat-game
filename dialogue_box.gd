@@ -34,7 +34,8 @@ func handle_sfx():
 		$Radio.stream = load("res://Assets/vine_boom.wav")
 	elif t == "*Screaming*":
 		$Radio.stream = load("res://Assets/screaming_girl.ogg")
+	elif t == "*Cue vision*":
+		$Radio.stream = load("res://Assets/vision_sound.ogg")
 	else:
 		return
 	$Radio.play()
-	#print($Radio.playing)
