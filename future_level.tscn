@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dlhppyw3lsjyk" path="res://dialogue_box.tscn" id="3_g8u15"]
 [ext_resource type="PackedScene" uid="uid://bg8au3fmmdgfk" path="res://healthbar.tscn" id="4_qbkoe"]
 [ext_resource type="PackedScene" uid="uid://bq2ne2yrd7j65" path="res://dog.tscn" id="6_b18mg"]
-[ext_resource type="Texture2D" uid="uid://crkaj8uoswu5y" path="res://Assets/menu button.png" id="7_tbkjy"]
+[ext_resource type="Texture2D" uid="uid://c6iw1el647i65" path="res://Assets/menu button.png" id="7_tbkjy"]
 [ext_resource type="FontFile" uid="uid://3iebfyny3uoe" path="res://Assets/DK Jambo.otf" id="8_cimjq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wfih1"]

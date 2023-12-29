@@ -42,14 +42,17 @@ func _process(delta):
 				
 	elif ph == Phase.BATTLE:
 		if boss_dead:
+			$Cat/AnimatedSprite2D.play("Idle")
 			$Cat.set_process(false)
-			$Cat/AnimatedSprite2D.play("idle")
 			dia.visible = true
 			dia.start_reading(end_dia)
 			ph = Phase.END
 			player_hp.visible = false
 			return
 		handle_boss()
+	else:
+		if !dia.reading:
+			get_tree().change_scene_to_file("res://win_game.tscn")
 
 func handle_boss():
 	$Dog.playerX = $Cat.position.x
