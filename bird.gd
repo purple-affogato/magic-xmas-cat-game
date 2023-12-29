@@ -62,3 +62,8 @@ func _on_water_body_entered(body):
 		dmg.add_to_group("dmg")
 		if body.flip:
 			dmg.scale.x = -dmg.scale.x
+
+
+func _on_ouch_timer_timeout():
+	for i in get_tree().get_nodes_in_group("dmg"):
+		i.queue_free()
