@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://rfsh1jqks2ap"]
+[gd_scene load_steps=20 format=3 uid="uid://rfsh1jqks2ap"]
 
 [ext_resource type="Script" path="res://past_level.gd" id="1_ckfk8"]
 [ext_resource type="PackedScene" uid="uid://betpqqnfkgqs5" path="res://cat.tscn" id="1_s4ikg"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bg8au3fmmdgfk" path="res://healthbar.tscn" id="7_g77oi"]
 [ext_resource type="Texture2D" uid="uid://c6iw1el647i65" path="res://Assets/menu button.png" id="7_qpbed"]
 [ext_resource type="FontFile" uid="uid://3iebfyny3uoe" path="res://Assets/DK Jambo.otf" id="8_aop5r"]
+[ext_resource type="AudioStream" uid="uid://c4tr3rkf6dkmi" path="res://Assets/dialogue_bgm.ogg" id="10_c0cw7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0tjr"]
 size = Vector2(61, 661)
@@ -121,6 +122,10 @@ offset_left = 345.0
 offset_top = 68.0
 offset_right = 345.0
 offset_bottom = 68.0
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_c0cw7")
+autoplay = true
 
 [connection signal="owner_offscreen" from="." to="." method="_on_owner_offscreen"]
 [connection signal="pressed" from="quit button" to="." method="_on_quit_button_pressed"]

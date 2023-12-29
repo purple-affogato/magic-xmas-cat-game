@@ -42,6 +42,8 @@ func _process(delta):
 			$Cat.set_process(true)
 			player_hp.visible = true
 			$SpawnTimer.start()
+			$BGM.stream = load("res://Assets/battle_bgm.ogg")
+			$BGM.play(0.0)
 	elif ph == Phase.BATTLE:
 		if kills >= 8:
 			remove_enemies()
@@ -52,6 +54,8 @@ func _process(delta):
 			ph = Phase.END
 			player_hp.visible = false
 			$SpawnTimer.queue_free()
+			$BGM.stream = load("res://Assets/dialogue_bgm.ogg")
+			$BGM.play(0.0)
 			return
 		handle_enemies()
 	else:

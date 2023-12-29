@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://deualq2ixjywn"]
+[gd_scene load_steps=15 format=3 uid="uid://deualq2ixjywn"]
 
 [ext_resource type="Texture2D" uid="uid://8jekrpo638nf" path="res://Assets/future bg.png" id="1_ehutp"]
 [ext_resource type="Script" path="res://future_level.gd" id="1_okmsa"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bq2ne2yrd7j65" path="res://dog.tscn" id="6_b18mg"]
 [ext_resource type="Texture2D" uid="uid://c6iw1el647i65" path="res://Assets/menu button.png" id="7_tbkjy"]
 [ext_resource type="FontFile" uid="uid://3iebfyny3uoe" path="res://Assets/DK Jambo.otf" id="8_cimjq"]
+[ext_resource type="AudioStream" uid="uid://c4tr3rkf6dkmi" path="res://Assets/dialogue_bgm.ogg" id="9_ftamb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wfih1"]
 size = Vector2(1179, 405)
@@ -86,5 +87,9 @@ theme_override_colors/font_color = Color(0.117647, 0.160784, 0.643137, 1)
 theme_override_fonts/font = ExtResource("8_cimjq")
 theme_override_font_sizes/font_size = 32
 text = "QUIT"
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_ftamb")
+autoplay = true
 
 [connection signal="pressed" from="quit button" to="." method="_on_quit_button_pressed"]

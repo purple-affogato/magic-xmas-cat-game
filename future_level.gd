@@ -29,6 +29,8 @@ func _process(delta):
 			ph = Phase.BATTLE
 			$Cat.set_process(true)
 			player_hp.visible = true
+			$BGM.stream = load("res://Assets/battle_bgm.ogg")
+			$BGM.play(0.0)
 			handle_boss()
 		else:
 			if dia.label.text == "You called?":
@@ -48,6 +50,8 @@ func _process(delta):
 			dia.start_reading(end_dia)
 			ph = Phase.END
 			player_hp.visible = false
+			$BGM.stream = load("res://Assets/dialogue_bgm.ogg")
+			$BGM.play(0.0)
 			return
 		handle_boss()
 	else:

@@ -37,6 +37,8 @@ func _process(delta):
 			ph = Phase.BATTLE
 			$Cat.set_process(true)
 			player_hp.visible = true
+			$BGM.stream = load("res://Assets/battle_bgm.ogg")
+			$BGM.play(0.0)
 		else:
 			if dia.label.text == "*Owner walks away*":
 				dia.set_process(false)
