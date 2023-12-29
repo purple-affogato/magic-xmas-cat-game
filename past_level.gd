@@ -49,6 +49,7 @@ func _process(delta):
 		if kills >= 5:
 			remove_enemies()
 			$Cat.set_process(false)
+			$Cat/AnimatedSprite2D.play("idle")
 			dia.visible = true
 			dia.start_reading(end_dia)
 			ph = Phase.END

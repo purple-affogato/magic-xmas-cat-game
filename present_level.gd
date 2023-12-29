@@ -43,9 +43,10 @@ func _process(delta):
 			player_hp.visible = true
 			$SpawnTimer.start()
 	elif ph == Phase.BATTLE:
-		if kills >= 9:
+		if kills >= 8:
 			remove_enemies()
 			$Cat.set_process(false)
+			$Cat/AnimatedSprite2D.play("idle")
 			dia.visible = true
 			dia.start_reading(end_dia)
 			ph = Phase.END

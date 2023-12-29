@@ -43,6 +43,7 @@ func _process(delta):
 	elif ph == Phase.BATTLE:
 		if boss_dead:
 			$Cat.set_process(false)
+			$Cat/AnimatedSprite2D.play("idle")
 			dia.visible = true
 			dia.start_reading(end_dia)
 			ph = Phase.END
