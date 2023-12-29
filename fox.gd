@@ -40,22 +40,21 @@ func handle_atk_animation():
 		$AnimatedSprite2D.play("idle")
 		$Fire/AOE.disabled = true
 		atk = true
+		var cat = get_parent().get_node("Cat")
+		if $Fire.overlaps_body(cat):
+			cat.get_parent().player_hp.get_node("ProgressBar").value -= 20
+			cat.get_node("OuchTimer").start()
+			var dmg = preload("res://damage.tscn").instantiate()
+			cat.add_child(dmg, true)
+			dmg.get_node("Sprite2D").frame = 1
+			dmg.position = cat.get_node("DMGPosition").position
+			dmg.add_to_group("dmg")
+			if cat.flip:
+				dmg.scale.x = -dmg.scale.x
 
 func _on_attack_timer_timeout():
 	$AnimatedSprite2D.play("fire")
 	$Fire/AOE.disabled = false
-
-func _on_fire_body_entered(body):
-	if body.get_name() == 'Cat':
-		body.get_parent().player_hp.get_node("ProgressBar").value -= 20
-		body.get_node("OuchTimer").start()
-		var dmg = preload("res://damage.tscn").instantiate()
-		dmg.get_node("Sprite2D").frame = 1
-		dmg.position = body.get_node("DMGPosition").position
-		dmg.add_to_group("dmg")
-		if body.flip:
-			dmg.scale.x = -dmg.scale.x
-		body.add_child(dmg)
 
 
 func _on_ouch_timer_timeout():

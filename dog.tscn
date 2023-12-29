@@ -91,6 +91,7 @@ size = Vector2(149, 145)
 size = Vector2(70, 109)
 
 [node name="Dog" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_8khmc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -113,7 +114,7 @@ disabled = true
 debug_color = Color(0.870588, 0.219608, 0.686275, 0.419608)
 
 [node name="AttackTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 3.0
 one_shot = true
 
 [node name="DeathTimer" type="Timer" parent="."]

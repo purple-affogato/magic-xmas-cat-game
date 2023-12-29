@@ -95,7 +95,7 @@ animations = [{
 size = Vector2(68.9477, 51)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f4elv"]
-size = Vector2(32, 58)
+size = Vector2(32, 32.6797)
 
 [node name="Fox" type="CharacterBody2D"]
 scale = Vector2(1.53, 1.53)
@@ -114,7 +114,7 @@ position = Vector2(1.47386, 1.5)
 shape = SubResource("RectangleShape2D_vf52o")
 
 [node name="AttackTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 3.0
 one_shot = true
 
 [node name="Fire" type="Area2D" parent="."]
@@ -145,6 +145,5 @@ visible = false
 position = Vector2(0, -35.2941)
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
-[connection signal="body_entered" from="Fire" to="." method="_on_fire_body_entered"]
 [connection signal="timeout" from="OuchTimer" to="." method="_on_ouch_timer_timeout"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

@@ -66,6 +66,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_f8nj3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ronsh")
 }],
 "loop": false,
 "name": &"water",
@@ -79,13 +82,13 @@ size = Vector2(61, 34.75)
 radius = 20.0998
 
 [node name="Bird" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_jylmp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_6v0ht")
-animation = &"fly_idle"
-frame_progress = 0.906988
+animation = &"water"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 7.625)
@@ -96,7 +99,7 @@ wait_time = 0.3
 one_shot = true
 
 [node name="AttackTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 3.0
 one_shot = true
 
 [node name="Water" type="Area2D" parent="."]
@@ -115,5 +118,4 @@ position = Vector2(0, -24)
 
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
-[connection signal="body_entered" from="Water" to="." method="_on_water_body_entered"]
 [connection signal="timeout" from="OuchTimer" to="." method="_on_ouch_timer_timeout"]
