@@ -191,13 +191,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3bkw1"]
-size = Vector2(54, 44)
+size = Vector2(44.8276, 31.0345)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iodpr"]
 radius = 25.4769
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2w5ku"]
-size = Vector2(41.8966, 46.8966)
+[sub_resource type="CircleShape2D" id="CircleShape2D_7n54m"]
+radius = 24.2951
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g1c2r"]
 size = Vector2(40, 42.4138)
@@ -207,6 +207,7 @@ size = Vector2(40.8621, 36.5517)
 
 [node name="Cat" type="CharacterBody2D"]
 scale = Vector2(1.45, 1.45)
+motion_mode = 1
 script = ExtResource("1_b8a80")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -215,7 +216,8 @@ sprite_frames = SubResource("SpriteFrames_igjy3")
 animation = &"Tail Whip"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-5, 4)
+position = Vector2(-3.10345, 5.17241)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_3bkw1")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -234,8 +236,9 @@ debug_color = Color(0.815686, 0.321569, 0.631373, 0.419608)
 
 [node name="AOE" type="CollisionShape2D" parent="Whip"]
 visible = false
-position = Vector2(38.3621, 5.51724)
-shape = SubResource("RectangleShape2D_2w5ku")
+position = Vector2(46.2069, 5.51724)
+scale = Vector2(1, 1)
+shape = SubResource("CircleShape2D_7n54m")
 disabled = true
 debug_color = Color(0.901961, 0.223529, 0.533333, 0.419608)
 
@@ -253,6 +256,7 @@ debug_color = Color(0.882353, 0.192157, 0.678431, 0.419608)
 scale = Vector2(1, 1)
 
 [node name="AOE" type="CollisionShape2D" parent="Fire"]
+visible = false
 position = Vector2(44.3966, 3.7931)
 shape = SubResource("RectangleShape2D_bsg0v")
 disabled = true
