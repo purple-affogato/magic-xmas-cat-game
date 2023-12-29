@@ -12,6 +12,7 @@ func start_reading(array):
 	label.text = dialogue[idx]
 	speaker.text = dialogue[idx-1]
 	reading = true
+	handle_sfx()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
