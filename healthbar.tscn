@@ -29,6 +29,7 @@ anchors_preset = 0
 scale = Vector2(1.275, 1.275)
 
 [node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 0
 offset_left = -240.0
 offset_top = -32.0
 offset_right = -184.0
@@ -38,6 +39,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_4vtnr")
 text = "HEALTH"
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
 offset_left = -240.0
 offset_top = -8.0
 offset_right = 248.0
